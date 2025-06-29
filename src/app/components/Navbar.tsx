@@ -1,6 +1,7 @@
 {/* 
   TODO: Image is not centered properly 
   TODO: SVG stroke widths are inconsistent
+  TODO: Navbar link doesn't work when used multiple times
   */}
 
 import Image from 'next/image';
@@ -60,9 +61,10 @@ export const Navbar = () => {
       <div className='flex justify-evenly px-50'>
         {navList.map((item) => (
           <Link
-            key={`collections/${item.name}`}
-            href={item.href}
+            key={item.name}
+            href={`collections/${item.href}`}
             className='text-lg font-bold'
+            replace={true}
           >
             {item.name}
           </Link>
