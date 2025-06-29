@@ -1,12 +1,6 @@
 import Image from 'next/image';
 
-interface ItemProps {
-  image: string;
-  name: string;
-  price: number;
-}
-
-const ItemCard = ({image, name, price} : ItemProps) => {
+const ItemCard = ({image, name, price} : Item) => {
   return (
     <>
       <Image 
