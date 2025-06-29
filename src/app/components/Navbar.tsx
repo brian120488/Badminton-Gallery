@@ -1,7 +1,6 @@
 {/* 
   TODO: Image is not centered properly 
   TODO: SVG stroke widths are inconsistent
-  TODO: Navbar link doesn't work when used multiple times
   */}
 
 import Image from 'next/image';
@@ -62,7 +61,7 @@ export const Navbar = () => {
         {navList.map((item) => (
           <Link
             key={item.name}
-            href={`collections/${item.href}`}
+            href={`/collections/${item.href}`}
             className='text-lg font-bold'
             replace={true}
           >
