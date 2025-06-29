@@ -6,7 +6,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const Navbar = () => {
+const Navbar = () => {
   const iconSize = 28;
   const logoSize = 150;
   const navList = [
@@ -30,7 +30,7 @@ export const Navbar = () => {
           unoptimized
         />
         
-        <Link href='/' replace={true}>
+        <Link href='/'>
           <Image
             src='/logo.png'
             alt='Logo'
@@ -63,15 +63,13 @@ export const Navbar = () => {
             key={item.name}
             href={`/collections/${item.href}`}
             className='text-lg font-bold'
-            replace={true}
           >
             {item.name}
           </Link>
         ))}
       </div>
     </nav>
-
-
-
   );
 }
+
+export default Navbar;
