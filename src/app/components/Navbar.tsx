@@ -39,20 +39,24 @@ const Navbar = () => {
           />
         </Link>
         <div className='flex gap-6'>
-          <Image
-            src='/person.svg'
-            alt='Account Icon'
-            width={iconSize}
-            height={iconSize}
-            unoptimized
-          />
-          <Image
-            src='/bag.svg'
-            alt='Cart Icon'
-            width={iconSize}
-            height={iconSize}
-            unoptimized
-          />
+          <Link href='/account'>
+            <Image
+              src='/person.svg'
+              alt='Account Icon'
+              width={iconSize}
+              height={iconSize}
+              unoptimized
+            />
+          </Link>
+          <Link href='/cart'>
+            <Image
+              src='/bag.svg'
+              alt='Cart Icon'
+              width={iconSize}
+              height={iconSize}
+              unoptimized
+            />
+          </Link>
         </div>
       </div>
 

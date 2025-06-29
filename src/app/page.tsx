@@ -12,9 +12,6 @@ export default function Home() {
         height={600}
         className="rounded-lg shadow-lg"
       /> */}
-      <p className="mt-4 text-lg">
-        Explore our wide range of badminton equipment and apparel!
-      </p>
     </div>
   );
 }

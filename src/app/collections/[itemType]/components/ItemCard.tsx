@@ -6,7 +6,7 @@ interface ItemProps {
   price: number;
 }
 
-const Item = ({image, name, price} : ItemProps) => {
+const ItemCard = ({image, name, price} : ItemProps) => {
   return (
     <>
       <Image 
@@ -21,4 +21,4 @@ const Item = ({image, name, price} : ItemProps) => {
   );
 }
 
-export default Item;
+export default ItemCard;
