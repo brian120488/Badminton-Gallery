@@ -65,7 +65,7 @@ const Navbar = () => {
         {navList.map((item) => (
           <Link
             key={item.name}
-            href={`/collections/${item.href}`}
+            href={`/collections${item.href}`}
             className='text-lg font-bold'
           >
             {item.name}
