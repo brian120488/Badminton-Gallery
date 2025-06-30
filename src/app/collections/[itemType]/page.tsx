@@ -1,4 +1,5 @@
 import ItemCard from './components/ItemCard';
+import type { Item } from '@/types/types';
 
 async function fetchItems(itemType: string): Promise<Item[]> {
   try {

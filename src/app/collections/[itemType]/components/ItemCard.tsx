@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import type { Item } from '@/types/types';
 
 const ItemCard = ({image, name, price} : Item) => {
   return (
