@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
         pathname: '/products/**',
       },
     ]
-  }
+  },
+  allowedDevOrigins: ['/_next/*'],
 };
 
 export default nextConfig;
