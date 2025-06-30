@@ -8,7 +8,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useAppSelector, useAppDispatch, useAppStore } from '@/lib/hooks'
+import { useAppSelector } from '@/lib/hooks'
 
 const Navbar = () => {
   const iconSize = 28;

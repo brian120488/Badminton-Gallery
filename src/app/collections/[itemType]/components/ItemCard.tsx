@@ -3,11 +3,11 @@
 import Image from 'next/image';
 import type { Item } from '@/types/types';
 import { addItem } from '@/lib/features/cart/cartSlice';
-import { useAppSelector, useAppDispatch, useAppStore } from '@/lib/hooks'
+import { useAppDispatch } from '@/lib/hooks'
 
 const ItemCard = ({image, name, price} : Item) => {
   const dispatch = useAppDispatch();
-  
+
   const addToCartHandler = () => {
     const item = {image: 'hi', name: 'test cart item', price: 21};
     dispatch(addItem(item));

@@ -1,6 +1,5 @@
 import ItemCard from './components/ItemCard';
 import type { Item } from '@/types/types';
-import StoreProvider from "@/app/StoreProvider";
 
 async function fetchItems(itemType: string): Promise<Item[]> {
   try {
