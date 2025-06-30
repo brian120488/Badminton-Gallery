@@ -1,5 +1,6 @@
 import ItemCard from './components/ItemCard';
 import type { Item } from '@/types/types';
+import StoreProvider from "@/app/StoreProvider";
 
 async function fetchItems(itemType: string): Promise<Item[]> {
   try {
@@ -15,7 +16,6 @@ async function fetchItems(itemType: string): Promise<Item[]> {
 export default async function ItemsPage({ params }: { params: Promise<{ itemType: string }> }) {
   const { itemType } = await params;
   const items = await fetchItems(itemType);
-  console.log("Fetched items:", items);
 
   return (
     <>

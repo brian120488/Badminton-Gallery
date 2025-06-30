@@ -1,3 +1,5 @@
+'use client';
+
 {/* 
   TODO: Image is not centered properly 
   TODO: SVG stroke widths are inconsistent
@@ -5,6 +7,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { useAppSelector, useAppDispatch, useAppStore } from '@/lib/hooks'
 
 const Navbar = () => {
   const iconSize = 28;
@@ -17,6 +21,9 @@ const Navbar = () => {
     { name: 'Shuttles', href: '/shuttles' },
     { name: 'String', href: '/string' },
   ];
+
+  const items = useAppSelector(state => state.cart.items);
+  const itemsCount = items.length;
 
   return (
     <nav>
@@ -57,6 +64,7 @@ const Navbar = () => {
               unoptimized
             />
           </Link>
+          <p>{itemsCount}</p>
         </div>
       </div>
 
