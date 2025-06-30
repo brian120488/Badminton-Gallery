@@ -29,5 +29,6 @@ export const options: NextAuthOptions = {
     }),
   ],
   adapter: DynamoDBAdapter(client),
+  secret: process.env.NEXTAUTH_SECRET,
 }
 
