@@ -14,18 +14,21 @@ async function fetchItems(itemType: string): Promise<Item[]> {
 export default async function ItemsPage({ params }: { params: Promise<{ itemType: string }> }) {
   const { itemType } = await params;
   const items = await fetchItems(itemType);
+  console.log("Fetched items:", items);
 
   return (
     <>
-      <div>Item Type: {itemType}</div>
-      {items.map((item) => (
-        <ItemCard
-          key={item.name}
-          image={item.image}
-          name={item.name}
-          price={item.price}
-        />
-      ))}
+      <span>Item Type: {itemType}</span>
+      <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 p-4'>
+        {items.map((item) => (
+          <ItemCard
+            key={item.name}
+            image={item.image}
+            name={item.name}
+            price={item.price}
+          />
+        ))}
+      </div>
     </>
   );
 }
