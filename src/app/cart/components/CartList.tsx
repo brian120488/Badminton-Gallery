@@ -1,4 +1,4 @@
-'use client'; // needed for localStorage and dispatch
+'use client'; // needed for localStorage
 
 import { useAppSelector } from '@/lib/hooks'
 import Link from 'next/link';
@@ -8,7 +8,7 @@ const ItemList = () => {
   const subtotal = cartItems.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <div>
+    <>
       <h2>Cart Items</h2>
       {cartItems.map((item, i) => (
         <div key={i}>{item.name}</div>
@@ -19,7 +19,7 @@ const ItemList = () => {
           Checkout
         </button>
       </Link>
-    </div>
+    </>
   )
 }
 
