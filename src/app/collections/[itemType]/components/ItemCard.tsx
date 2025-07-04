@@ -1,4 +1,4 @@
-'use client';
+'use client'; // needed for localStorage and dispatch
 
 import Image from 'next/image';
 import type { Item } from '@/types/types';
@@ -9,7 +9,7 @@ const ItemCard = ({image, name, price} : Item) => {
   const dispatch = useAppDispatch();
 
   const addToCartHandler = () => {
-    const item = {image: 'hi', name: 'test cart item', price: 21};
+    const item = {image: image, name: name, price: price};
     dispatch(addItem(item));
   };
   
