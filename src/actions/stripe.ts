@@ -23,7 +23,7 @@ export async function fetchClientSecret() {
       }
     ],
     mode: 'payment',
-    return_url: `${origin}/return?session_id={CHECKOUT_SESSION_ID}`,
+    return_url: `${origin}/return/{CHECKOUT_SESSION_ID}`,
   })
 
   return session.client_secret!

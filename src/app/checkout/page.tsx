@@ -1,10 +1,10 @@
 'use client'; // needed for localStorage
 
-import { useAppSelector } from '@/lib/hooks'
-import Checkout from './components/Checkout.tsx'
+// import { useAppSelector } from '@/lib/hooks'
+import Checkout from './components/Checkout'
 
 export default function CheckoutPage() {
-  const cartItems = useAppSelector((state) => state.cart.items);
+  // const cartItems = useAppSelector((state) => state.cart.items);
 
   return (
     <>
