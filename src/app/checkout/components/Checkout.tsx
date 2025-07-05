@@ -8,7 +8,8 @@ import { loadStripe } from '@stripe/stripe-js'
 
 import { fetchClientSecret } from '@/actions/stripe'
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_TEST!)
 
 export default function Checkout() {
   return (
