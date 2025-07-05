@@ -1,6 +1,6 @@
 'use client'; // needed for localStorage
 
-import { useAppSelector } from '@/lib/hooks'
+import { useAppSelector } from '@/lib/redux/store'
 import Link from 'next/link';
 
 const ItemList = () => {

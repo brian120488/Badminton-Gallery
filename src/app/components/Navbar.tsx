@@ -1,14 +1,13 @@
 'use client';
 
 {/* 
-  TODO: Image is not centered properly 
   TODO: SVG stroke widths are inconsistent
   */}
 
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { useAppSelector } from '@/lib/hooks'
+import { useAppSelector } from '@/lib/redux/store'
 
 const Navbar = () => {
   const iconSize = 28;

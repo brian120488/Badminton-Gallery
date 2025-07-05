@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 import type { Item } from '@/types/types';
-import { addItem } from '@/lib/features/cart/cartSlice';
-import { useAppDispatch } from '@/lib/hooks'
+import { addItem } from '@/lib/redux/cart/cartSlice';
+import { useAppDispatch } from '@/lib/redux/store'
 
 const ItemCard = ({image, name, price} : Item) => {
   const dispatch = useAppDispatch();
