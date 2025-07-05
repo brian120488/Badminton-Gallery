@@ -1,11 +1,12 @@
 import React from 'react';
 import ItemCard from './ItemCard'; 
 import type { Item } from '@/types/types'; 
-
+import { headers } from 'next/headers';
 
 async function fetchItems(itemType: string) {
   try {
-    const res = await fetch(`http://localhost:3000/api/collections/${itemType}`, { cache: 'no-store' });
+    const url = process.env.NEXT_PUBLIC_BASE_URL;
+    const res = await fetch(`${url}/api/collections/${itemType}`, { cache: 'no-store' });
     const data = await res.json();
     return data.items;
   } catch (error) {
