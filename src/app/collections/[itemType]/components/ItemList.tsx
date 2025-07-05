@@ -1,7 +1,6 @@
 import React from 'react';
 import ItemCard from './ItemCard'; 
 import type { Item } from '@/types/types'; 
-import { headers } from 'next/headers';
 
 async function fetchItems(itemType: string) {
   try {
