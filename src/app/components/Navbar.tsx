@@ -28,45 +28,29 @@ const Navbar = () => {
   return (
     <nav>
       {/* Top Section */}
-      <div className='flex px-32 py-8 justify-between items-center'>
-        <Image
-          src='/search.svg'
-          alt='Search Icon'
-          width={iconSize}
-          height={iconSize}
-          unoptimized
-        />
-        
-        <Link href='/'>
-          <Image
-            src='/logo.png'
-            alt='Logo'
-            width={logoSize}
-            height={logoSize}
-          />
-        </Link>
-        <div className='flex gap-6'>
+      <div className='flex justify-between items-center px-32 py-8'>
+        <div className='flex-1'>
+          <Image src='/search.svg' alt='Search Icon' width={iconSize} height={iconSize} unoptimized 
+          className='flex-1'/>
+        </div>
+
+        <div className='flex justify-center flex-1'>
+          <Link href='/'>
+            <Image src='/logo.png' alt='Logo' width={logoSize} height={logoSize} />
+          </Link>
+        </div>
+
+        <div className='flex justify-end items-center gap-6 flex-1'>
           <Link href='/account'>
-            <Image
-              src='/person.svg'
-              alt='Account Icon'
-              width={iconSize}
-              height={iconSize}
-              unoptimized
-            />
+            <Image src='/person.svg' alt='Account Icon' width={iconSize} height={iconSize} unoptimized />
           </Link>
           <Link href='/cart'>
-            <Image
-              src='/bag.svg'
-              alt='Cart Icon'
-              width={iconSize}
-              height={iconSize}
-              unoptimized
-            />
+            <Image src='/bag.svg' alt='Cart Icon' width={iconSize} height={iconSize} unoptimized />
           </Link>
           <p>{itemsCount}</p>
         </div>
       </div>
+
 
       {/* Bottom Section */}
       <div className='flex justify-evenly px-50'>
