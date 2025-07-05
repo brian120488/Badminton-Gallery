@@ -29,8 +29,7 @@ const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
-    
-    <nav>
+    <nav className='border-b border-gray-200 pb-2'>
       {showSearch && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg shadow-xl w-[90%] max-w-md">

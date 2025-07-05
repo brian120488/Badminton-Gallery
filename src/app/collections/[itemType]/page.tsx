@@ -13,7 +13,9 @@ export default async function ItemsPage({ params }: { params: Promise<{ itemType
     <>
       <span className="block text-4xl font-bold text-gray-800 mx-32 mt-8 mb-4">{capitalize(itemType)}</span>
       <Suspense fallback={<ItemListSkeleton />}>
-        <ItemList itemType={itemType} />
+        <div className="animate-fade-in">
+          <ItemList itemType={itemType} />
+        </div>
       </Suspense>
     </>
   );
