@@ -13,7 +13,7 @@ import { useState } from 'react';
 const Navbar = () => {
   const iconSize = 28;
   const logoSize = 140;
-  const logoHoverScale = 'hover:scale-105';
+  const iconHoverScale = 'hover:scale-105';
   const navList = [
     { name: 'Rackets', href: '/rackets' },
     { name: 'Shoes', href: '/shoes' },
@@ -59,13 +59,13 @@ const Navbar = () => {
             width={iconSize} 
             height={iconSize} 
             unoptimized 
-            className={logoHoverScale}
+            className={iconHoverScale}
           />
         </div>
 
         <div className='flex justify-center flex-1'>
           <Link href='/'>
-            <Image src='/logo.png' alt='Logo' width={logoSize} height={logoSize} />
+            <Image src='/logo.png' alt='Logo' width={logoSize} height={logoSize} priority />
           </Link>
         </div>
 
@@ -77,7 +77,7 @@ const Navbar = () => {
               width={iconSize} 
               height={iconSize} 
               unoptimized 
-              className={logoHoverScale}
+              className={iconHoverScale}
             />
           </Link>
           <Link href='/cart' className='relative'>
@@ -88,7 +88,7 @@ const Navbar = () => {
               width={iconSize}
               height={iconSize}
               unoptimized
-              className={logoHoverScale}
+              className={iconHoverScale}
             />
 
             {/* Counter Badge */}

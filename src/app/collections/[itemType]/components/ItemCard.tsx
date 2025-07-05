@@ -17,10 +17,12 @@ const ItemCard = ({image, name, price} : Item) => {
     <div className="p-4 border rounded-lg shadow-md">
       <div className="relative w-full h-90 rounded p-4">
         <Image
+          fill
           src={image}
           alt={name}
-          fill={true}
           className="object-cover"
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          priority
         />
       </div>
       <h1 className="mt-2">{name}</h1>
