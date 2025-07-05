@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --animate-test: appear .1s ease forwards;
+  --animate-appear: appear .1s ease forwards;
   @keyframes appear {
     0%: {
       width: 0%;

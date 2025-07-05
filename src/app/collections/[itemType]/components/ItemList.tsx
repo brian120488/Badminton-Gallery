@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import ItemCard from './ItemCard';
-import type { Item } from '@/types/types';
+import React, { useEffect, useState, use } from 'react';
+import ItemCard from './ItemCard'; 
+import type { Item } from '@/types/types'; 
 
 export default function ItemList({ itemType }: { itemType: string }) {
   const [items, setItems] = useState<Item[]>([]);
@@ -21,9 +21,7 @@ export default function ItemList({ itemType }: { itemType: string }) {
       }
     }
     fetchItems();
-  }, [itemType]);
-
-  if (loading) return <p>Loading...</p>;
+  }, []);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-32 justify-evenly items-center">
@@ -31,7 +29,7 @@ export default function ItemList({ itemType }: { itemType: string }) {
         <ItemCard
           key={item.name}
           image={item.image}
-          name={item.name}
+          name={item.name}  
           price={item.price}
         />
       ))}

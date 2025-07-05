@@ -8,7 +8,7 @@ interface Props {
 
 export default function LocationCard({ location, address, image }: Props) {
   return (
-    <div className='flex p-6 mx-12 border rounded-xl overflow-hidden'>
+    <div className='flex p-6 border rounded-xl overflow-hidden'>
       {/* Image Section */}
       <div className='relative w-[40vw] aspect-[4/3]'>
         <Image

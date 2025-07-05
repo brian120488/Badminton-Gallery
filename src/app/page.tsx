@@ -2,8 +2,8 @@ import LocationCard from './components/LocationCard';
 
 export default function Home() {
   return (
-    <div className='relative'>
-      <h1 className='text-4xl font-bold'>Badminton Gallery</h1>
+    <div className='relative mx-32 flex flex-col items-center'>
+      <h1 className='mt-16 text-4xl font-bold'>Badminton Gallery</h1>
       <h1 className='text-2xl'>&quot;Bringing the Best of Badminton to Every Player&quot;</h1>
       <div className="flex flex-col gap-y-6 mt-6">
         <LocationCard location='Flushing' address='133-33 39th Ave, Queens, NY 11354' image="flushing.jpg" />
