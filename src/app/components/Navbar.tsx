@@ -44,10 +44,23 @@ const Navbar = () => {
           <Link href='/account'>
             <Image src='/person.svg' alt='Account Icon' width={iconSize} height={iconSize} unoptimized />
           </Link>
-          <Link href='/cart'>
-            <Image src='/bag.svg' alt='Cart Icon' width={iconSize} height={iconSize} unoptimized />
+          <Link href="/cart" className="relative">
+            {/* Cart Icon */}
+            <Image
+              src="/bag.svg"
+              alt="Cart Icon"
+              width={iconSize}
+              height={iconSize}
+              unoptimized
+            />
+
+            {/* Counter Badge */}
+            {itemsCount > 0 && (
+              <span className="absolute top-0 right-0 -mt-1 -mr-1 bg-black text-white text-xs font-bold rounded-full size-5 flex items-center justify-center">
+                {itemsCount}
+              </span>
+            )}
           </Link>
-          <p>{itemsCount}</p>
         </div>
       </div>
 
