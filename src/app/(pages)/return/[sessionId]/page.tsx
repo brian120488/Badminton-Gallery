@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { stripe } from '../../../lib/stripe'
+import { stripe } from '@/lib/stripe'
 
 export default async function ReturnPage({ params }: { params: Promise<{ sessionId: string }> }) {
   const { sessionId } = await params;
