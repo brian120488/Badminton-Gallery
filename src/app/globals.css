@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --animate-test: appear .1s ease forwards;
+  @keyframes appear {
+    0%: {
+      width: 0%;
+    }
+    100% { 
+      width: 100%;
+    }
+  }
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

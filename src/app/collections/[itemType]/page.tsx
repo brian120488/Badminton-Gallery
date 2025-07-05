@@ -1,11 +1,15 @@
 import ItemList from './components/ItemList';
 
+function capitalize(s: string) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
 export default async function ItemsPage({ params }: { params: Promise<{ itemType: string }> }) {
   const { itemType } = await params;
 
   return (
     <>
-      <span>Item Type: {itemType}</span>
+      <span className="block text-4xl font-bold text-gray-800 mx-32 mt-8 mb-4">{capitalize(itemType)}</span>
       <ItemList itemType={itemType} />
     </>
   );
