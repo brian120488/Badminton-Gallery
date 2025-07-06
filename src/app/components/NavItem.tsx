@@ -8,9 +8,11 @@ interface Props {
 
 export default function NavItem({ children, href }: Props) {
   return (
-    <Link href={href} className="group inline-block text-lg font-bold text-gray-800 group-hover:shadow">
+    <Link
+      href={href}
+      className="inline-block text-lg font-bold text-gray-800 underline underline-offset-4 decoration-2 decoration-transparent hover:decoration-current transition-all duration-300"
+    >
       {children}
-      <span className="block h-[2px] -mt-1 bg-black w-0 group-hover:animate-appear"></span>
     </Link>
   )
 }
