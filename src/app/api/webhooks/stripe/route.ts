@@ -8,17 +8,16 @@ export async function POST(req: Request) {
   const signature = req.headers.get('stripe-signature')!
 
   let event;
-  console.log('hi')
   try {
     event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!)
-  } catch (err) {
-    return NextResponse.json({ error: 'Invalid Stripe signature' }, { status: 400 });
+  } catch (error) {
+    return NextResponse.json({ error: error }, { status: 400 });
   }
 
   console.log('Event Type: ', event.type)
 
   if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as any;
+    const session = event.data.object;
     const email = session.customer_details?.email;
     console.log(email);
 
