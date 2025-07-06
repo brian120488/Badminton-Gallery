@@ -24,8 +24,7 @@ const Navbar = () => {
     { name: 'Paddles', href: '/paddles'}
   ];
 
-  const items = useAppSelector(state => state.cart.items);
-  const itemsCount = items.length;
+  const itemCount = useAppSelector(state => state.cart.itemCount);
   const [showSearch, setShowSearch] = useState(false);
 
   return (
@@ -91,9 +90,9 @@ const Navbar = () => {
             />
 
             {/* Counter Badge */}
-            {itemsCount > 0 && (
+            {itemCount > 0 && (
               <span className='absolute top-0 right-0 -mt-1 -mr-1 bg-black text-white text-xs font-bold rounded-full size-5 flex items-center justify-center'>
-                {itemsCount}
+                {itemCount}
               </span>
             )}
           </Link>

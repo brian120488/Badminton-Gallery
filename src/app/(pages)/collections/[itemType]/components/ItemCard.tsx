@@ -9,7 +9,7 @@ const ItemCard = ({image, name, price} : Item) => {
   const dispatch = useAppDispatch();
 
   const addToCartHandler = () => {
-    const item = {image: image, name: name, price: price};
+    const item = {image: image, name: name, price: price, quantity: 1};
     dispatch(addItem(item));
   };
   
@@ -25,8 +25,8 @@ const ItemCard = ({image, name, price} : Item) => {
           priority
         />
       </div>
-      <h1 className="mt-2">{name}</h1>
-      <h1>${price}</h1>
+      <h1 className="mt-2 text-xl font-bold">{name}</h1>
+      <h2 className="text-lg">${price}</h2>
       
       <button 
         className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
