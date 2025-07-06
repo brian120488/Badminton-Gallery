@@ -32,8 +32,7 @@ const storage = createPersistStorage();
 
 const persistConfig = {
   key: 'cart',
-  storage,
-  whitelist: ['items'],
+  storage
 };
 
 const persistedReducer = persistReducer(persistConfig, cartReducer);
