@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 const ItemList = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
+  const itemCount = useAppSelector((state) => state.cart.itemCount);
   const subtotal = useAppSelector((state) => state.cart.subtotal);
   const dispatch = useAppDispatch();
 
@@ -47,19 +48,22 @@ const ItemList = () => {
       </table>
 
 
-
-      <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
-      <Link href="/checkout">
-        <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          Checkout
-        </button>
-      </Link>
-      <button 
-        className="ml-2 mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-        onClick={() => dispatch(clearCart())}
-        >
-        Clear Cart
-      </button>
+      {itemCount > 0 && (
+        <>
+          <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
+          <Link href="/checkout">
+            <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+              Checkout
+            </button>
+          </Link>
+          <button 
+            className="ml-2 mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            onClick={() => dispatch(clearCart())}
+            >
+            Clear Cart
+          </button>
+        </>
+      )}
     </>
   )
 }
