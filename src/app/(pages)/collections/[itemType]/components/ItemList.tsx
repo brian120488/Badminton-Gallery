@@ -28,9 +28,7 @@ export default function ItemList({ itemType, sort }: Props) {
 
   useEffect(() => {
     async function sortItems(sort: string) {
-      console.log('running')
-      let sortedItems = items.slice();
-      console.log(sortedItems)
+      const sortedItems = items.slice();
       if (sort === 'price-low-high') {
         sortedItems.sort((a: Item, b: Item) => a.price - b.price);
       } else if (sort === 'price-high-low') {
@@ -38,7 +36,6 @@ export default function ItemList({ itemType, sort }: Props) {
       } else if (sort === 'name') {
         sortedItems.sort((a: Item, b: Item)  => a.name.localeCompare(b.name));
       }
-      console.log(sortedItems)
       setItems(sortedItems)
     }
       
