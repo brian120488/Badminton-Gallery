@@ -17,22 +17,6 @@ export default function Home() {
         <LocationCard location='Philadelphia' address='3300 Aldine St, Philadelphia, PA 19136' image="philadelphia.jpg" />
         </FadeIn>
       </div>
-
-      
-      {/* <Image
-        src='/locations/bkny.jpg'
-        alt='Brooklyn Badminton Shop'
-        width={800}
-        height={600}
-        className='rounded-lg shadow-lg'
-      />
-      <Image
-        src='/locations/philadelphia.jpg'
-        alt='Philadelphia Badminton Shop'
-        width={800}
-        height={600}
-        className='rounded-lg shadow-lg'
-      /> */}
     </div>
   );
 }

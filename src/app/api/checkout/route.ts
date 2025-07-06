@@ -31,7 +31,7 @@ function getShippingRateData(subtotal: number) {
           maximum: { unit: 'business_day', value: 5 },
         },
       },
-    };
+    } as const;
   } else {
     // Standard $15 shipping
     return {
@@ -44,7 +44,7 @@ function getShippingRateData(subtotal: number) {
           maximum: { unit: 'business_day', value: 5 },
         },
       },
-    };
+    } as const;
   }
 }
 
