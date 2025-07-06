@@ -67,12 +67,12 @@ export default function Footer() {
 
       {/* Payment Icons */}
       <div className="mt-12 border-t border-gray-800 pt-6 text-center">
-        <h4 className="text-sm font-semibold mb-4 text-gray-400">We Accept</h4>
-        <div className="flex justify-center items-center gap-6 grayscale">
+        <h4 className="text-sm font-semibold mb-2 text-gray-400">We Accept</h4>
+        <div className="flex justify-center items-center gap-6">
           <Image src="/payments/visa.svg" alt="Visa" width={50} height={30} />
           <Image src="/payments/mastercard.svg" alt="Mastercard" width={50} height={30} />
-          <Image src="/payments/paypal.svg" alt="PayPal" width={50} height={30} />
-          <Image src="/payments/stripe.svg" alt="Stripe" width={50} height={30} />
+          <Image src="/payments/amex.svg" alt="Amex" width={50} height={30} />
+          <Image src="/payments/discover.svg" alt="Discover" width={50} height={30} />
           <Image src="/payments/applepay.svg" alt="Apple Pay" width={50} height={30} />
         </div>
       </div>

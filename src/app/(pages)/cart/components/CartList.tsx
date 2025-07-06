@@ -12,7 +12,6 @@ const ItemList = () => {
   return (
     <>
       <h2>Cart Items</h2>
-      
 
       <table className="min-w-full border-collapse border border-gray-300 my-4">
         <thead>

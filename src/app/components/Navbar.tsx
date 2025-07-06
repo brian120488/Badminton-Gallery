@@ -55,8 +55,7 @@ const Navbar = () => {
             src='/search.svg' 
             alt='Search Icon' 
             width={iconSize} 
-            height={iconSize} 
-            unoptimized 
+            height={iconSize}  
             className={iconHoverScale}
           />
         </div>
@@ -74,7 +73,6 @@ const Navbar = () => {
               alt='Account Icon' 
               width={iconSize} 
               height={iconSize} 
-              unoptimized 
               className={iconHoverScale}
             />
           </Link>
@@ -85,7 +83,6 @@ const Navbar = () => {
               alt='Cart Icon'
               width={iconSize}
               height={iconSize}
-              unoptimized
               className={iconHoverScale}
             />
 
