@@ -17,9 +17,41 @@ function convertToStripeLineItems(cartItems: Item[]) {
   }));
 }
 
+// Expects subtotal in Stripe units
+function getShippingRateData(subtotal: number) {
+  if (subtotal >= 15000) { 
+    // Free shipping
+    return {
+      shipping_rate_data: {
+        type: 'fixed_amount',
+        fixed_amount: { amount: 0, currency: 'usd' },
+        display_name: 'Free Shipping',
+        delivery_estimate: {
+          minimum: { unit: 'business_day', value: 3 },
+          maximum: { unit: 'business_day', value: 5 },
+        },
+      },
+    };
+  } else {
+    // Standard $15 shipping
+    return {
+      shipping_rate_data: {
+        type: 'fixed_amount',
+        fixed_amount: { amount: 1500, currency: 'usd' },
+        display_name: 'Standard Shipping',
+        delivery_estimate: {
+          minimum: { unit: 'business_day', value: 3 },
+          maximum: { unit: 'business_day', value: 5 },
+        },
+      },
+    };
+  }
+}
+
 export async function POST(req: Request) {
-  const { items } = await req.json();
-  console.log('Items: ', items);
+  const { cart } = await req.json();
+  const items = cart.items;
+
   const line_items = convertToStripeLineItems(items);
   console.log('Line Items: ', line_items);
 
@@ -30,6 +62,10 @@ export async function POST(req: Request) {
     line_items,
     mode: 'payment',
     return_url: `${origin}/return/{CHECKOUT_SESSION_ID}`,
+    shipping_address_collection: {
+      allowed_countries: ['US', 'CA'], // Customize this to your region
+    },
+    shipping_options: [getShippingRateData(cart.subtotal * 100)],
   });
 
   return NextResponse.json({ clientSecret: session.client_secret });

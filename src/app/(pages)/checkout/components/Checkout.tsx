@@ -12,13 +12,13 @@ import { useAppSelector } from '@/lib/redux/store'
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY_TEST!)
 
 export default function Checkout() {
-  const items = useAppSelector(state => state.cart.items);
+  const cart = useAppSelector(state => state.cart);
 
   const fetchClientSecret = async () => {
     const res = await fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: items }),
+      body: JSON.stringify({ cart: cart }),
     });
   
     const { clientSecret } = await res.json();
