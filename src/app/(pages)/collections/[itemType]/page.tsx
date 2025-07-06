@@ -1,22 +1,14 @@
-import ItemList from './components/ItemList';
-import { Suspense } from 'react';
-import { ItemListSkeleton } from './components/ItemListSkeleton';
-
-function capitalize(s: string) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
+import ItemListWrapper from './components/ItemListWrapper'
 
 export default async function ItemsPage({ params }: { params: Promise<{ itemType: string }> }) {
-  const { itemType } = await params;
+  const { itemType } = await params
 
   return (
     <>
-      <span className="block text-4xl font-bold text-gray-800 mx-32 mt-8 mb-4">{capitalize(itemType)}</span>
-      <Suspense fallback={<ItemListSkeleton />}>
-        <div className="animate-fade-in">
-          <ItemList itemType={itemType} />
-        </div>
-      </Suspense>
+      <span className="block text-4xl font-bold text-gray-800 mx-32 mt-8 mb-4">
+        {itemType.charAt(0).toUpperCase() + itemType.slice(1)}
+      </span>
+      <ItemListWrapper itemType={itemType} />
     </>
   );
 }
