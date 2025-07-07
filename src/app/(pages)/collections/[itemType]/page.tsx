@@ -1,6 +1,6 @@
 import ItemListWrapper from './components/ItemListWrapper'
-import { getProducts } from '@/lib/dynamo'
-import { getProductImages } from '@/lib/s3';
+import { getProducts } from '@/lib/aws/dynamo'
+import { getProductImages } from '@/lib/aws/s3';
 
 export default async function ItemsPage({ params }: { params: Promise<{ itemType: string }> }) {
   const { itemType } = await params;
