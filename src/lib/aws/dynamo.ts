@@ -2,7 +2,7 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
 import { DynamoDBDocumentClient, ScanCommand } from '@aws-sdk/lib-dynamodb'
 import { Item } from '@/types/types'
 
-export async function getProducts(itemType: string) {
+export async function getProductsByType(itemType: string) {
   try {
     const client = new DynamoDBClient({
       credentials: {
