@@ -5,30 +5,16 @@ import ItemCard from './ItemCard'
 import type { Item } from '@/types/types'
 
 interface Props {
-  itemType: string
+  items: Item[]
   sort: string
 }
 
-export default function ItemList({ itemType, sort }: Props) {
-  const [items, setItems] = useState<Item[]>([])
-
-  useEffect(() => {
-    async function loadItems() {
-      try {
-        const url = process.env.NEXT_PUBLIC_BASE_URL;
-        const res = await fetch(`${url}/api/collections/${itemType}`);
-        const data = await res.json();
-        setItems(data.items)
-      } catch (err) {
-        console.error('Error fetching items:', err)
-      }
-    }
-    loadItems();
-  }, []);
+export default function ItemList({ items, sort }: Props) {
+  const [arr, setItems] = useState<Item[]>([])
 
   useEffect(() => {
     async function sortItems(sort: string) {
-      const sortedItems = items.slice();
+      const sortedItems = arr.slice();
       if (sort === 'price-low-high') {
         sortedItems.sort((a: Item, b: Item) => a.price - b.price);
       } else if (sort === 'price-high-low') {
@@ -46,10 +32,8 @@ export default function ItemList({ itemType, sort }: Props) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-32 justify-evenly items-center">
       {items.map((item) => (
         <ItemCard
-          key={item.name}
-          image={item.image}
-          name={item.name}
-          price={item.price}
+          key={item.id}
+          item={item}
         />
       ))}
     </div>

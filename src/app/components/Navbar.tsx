@@ -15,13 +15,13 @@ const Navbar = () => {
   const logoSize = 140;
   const iconHoverScale = 'hover:scale-105';
   const navList = [
-    { name: 'Rackets', href: '/rackets' },
-    { name: 'Shoes', href: '/shoes' },
-    { name: 'Bags', href: '/bags' },
+    { name: 'Rackets', href: '/racket' },
+    { name: 'Shoes', href: '/shoe' },
+    { name: 'Bags', href: '/bag' },
     { name: 'Apparel', href: '/apparel' },
-    { name: 'Shuttles', href: '/shuttles' },
+    { name: 'Shuttles', href: '/shuttle' },
     { name: 'String', href: '/string' },
-    { name: 'Paddles', href: '/paddles'}
+    { name: 'Paddles', href: '/paddle'}
   ];
 
   const itemCount = useAppSelector(state => state.cart.itemCount);

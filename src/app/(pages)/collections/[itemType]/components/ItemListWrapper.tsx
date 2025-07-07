@@ -4,13 +4,14 @@ import { useState, Suspense } from 'react'
 import ItemList from './ItemList'
 import ItemListSkeleton from './ItemListSkeleton'
 import SortSelector from './SortSelector'
+import { Item } from '@/types/types'
 
-
-interface ItemsPageClientWrapperProps {
+interface Props {
   itemType: string
+  items: Item[]
 }
 
-export default function ItemsPageClientWrapper({ itemType }: ItemsPageClientWrapperProps) {
+export default function ItemsListWrapper({ items }: Props) {
   const [sort, setSort] = useState('featured');
 
   return (
@@ -19,7 +20,7 @@ export default function ItemsPageClientWrapper({ itemType }: ItemsPageClientWrap
 
       <Suspense fallback={<ItemListSkeleton />}>
         <div className="animate-fade-in">
-          <ItemList itemType={itemType} sort={sort} />
+          <ItemList items={items} sort={sort} />
         </div>
       </Suspense>
     </>

@@ -8,8 +8,8 @@ function convertToStripeLineItems(cartItems: Item[]) {
       currency: 'usd',
       product_data: {
         name: item.name,
-        description: item.description,
-        images: [item.image],
+        description: 'description',
+        images: item.images,
       },
       unit_amount: Math.round(item.price * 100), // convert dollars to cents
     },

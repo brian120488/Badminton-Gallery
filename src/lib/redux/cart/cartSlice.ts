@@ -16,6 +16,7 @@ const cartSlice = createSlice({
       if (i != -1) {
         state.items[i].quantity!++;
       } else {
+        action.payload.quantity = 1;
         state.items.push(action.payload);
       }
       state.itemCount++;
