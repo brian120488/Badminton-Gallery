@@ -14,7 +14,7 @@ export default function ItemCard({ item }: { item: Item }) {
   };
   
   return (
-      <div className="p-2 border-none rounded-lg hover:shadow-2xl">
+      <div className="p-3 border-none rounded-lg hover:shadow-2xl">
         <Link href={`/products/${item.id}`}>
           <div className="relative w-100% aspect-5/6 max-h-sm overflow-hidden rounded-lg">
             <Image
