@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.className} antialiased`}>
+    <html lang="en" className={`${inter.variable} antialiased`}>
       <body>
         <ReduxProvider>
           <Navbar />

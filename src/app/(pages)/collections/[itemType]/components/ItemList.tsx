@@ -29,7 +29,7 @@ export default function ItemList({ items, sort }: Props) {
   }, [sort]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-32 justify-evenly items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-32 justify-evenly items-center">
       {items.map((item) => (
         <ItemCard
           key={item.id}
