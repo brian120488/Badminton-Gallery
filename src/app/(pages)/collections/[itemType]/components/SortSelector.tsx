@@ -5,7 +5,7 @@ interface Props {
 
 export default function SortSelector({ sort, setSort }: Props) {
   return (
-    <div className="mb-4 mx-32">
+    <div className="mb-4">
       <label htmlFor="sort" className="mr-2 font-semibold">Sort by:</label>
       <select
         id="sort"
