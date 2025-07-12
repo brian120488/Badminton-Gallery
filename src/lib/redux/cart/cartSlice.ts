@@ -12,15 +12,15 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<Item>) => {
+      // TODO: check selection object, not just name
       const i = state.items.findIndex(item => item.name === action.payload.name);
       if (i != -1) {
-        state.items[i].quantity!++;
+        state.items[i].quantity! += action.payload.quantity;
       } else {
-        action.payload.quantity = 1;
         state.items.push(action.payload);
       }
-      state.itemCount++;
-      state.subtotal += action.payload.price;
+      state.itemCount += action.payload.quantity;
+      state.subtotal += action.payload.price * action.payload.quantity;
     },
     removeItem: (state, action: PayloadAction<Item>) => {
       const index = state.items.findIndex(item => item.name === action.payload.name);

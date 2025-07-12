@@ -1,18 +1,18 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
-import { DynamoDBDocumentClient, ScanCommand } from '@aws-sdk/lib-dynamodb'
+import { DynamoDBDocumentClient, ScanCommand, GetCommand } from '@aws-sdk/lib-dynamodb'
 import { Item } from '@/types/types'
+
+const client = new DynamoDBClient({
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
+  },
+});
+const ddb = DynamoDBDocumentClient.from(client);
+const TABLE_NAME = 'ProductCatalog'; 
 
 export async function getProductsByType(itemType: string) {
   try {
-    const client = new DynamoDBClient({
-      credentials: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
-      },
-    });
-    const ddb = DynamoDBDocumentClient.from(client);
-    const TABLE_NAME = 'ProductCatalog'; 
-    
     const command = new ScanCommand({
       TableName: TABLE_NAME,
       FilterExpression: `#type = :itemType`,
@@ -34,7 +34,28 @@ export async function getProductsByType(itemType: string) {
   }
 }
 
+export async function getProductById(id: string) {
+  try {
+    const command = new GetCommand({
+      TableName: TABLE_NAME,
+      Key: {
+        Id: id
+      },
+    });
+
+    const result = await ddb.send(command);
+    const item = keysToCamelCase(result.Item) as Item;
+    return item;
+  } catch (error) {
+    console.error(`Failed to fetch product with ID "${id}":`, error);
+    throw error;
+  }
+}
+
 function toCamelCase(str: string) {
+  if (str.includes('_')) {
+    return str.toLowerCase();
+  }
   return str.charAt(0).toLowerCase() + str.slice(1);
 }
 

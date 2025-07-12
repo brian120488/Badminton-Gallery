@@ -24,9 +24,8 @@ export interface BaseItem {
   images: string[];
   price: number;
   quantity: number
+  selection: Record<string, any>;
 }
-
-// TODO: make a map for items to add quantities
 
 export interface Cart {
   items: Item[];
@@ -43,16 +42,18 @@ export interface RacketItem extends BaseItem {
     colors: string[];
   };
   selection: {
-    weight_grip: string;
     color: string;
+    weight_grip: string;
+    string: string;
+    tension: number;
   }
 }
 
 export interface BagItem extends BaseItem {
   type: 'bag';
-  capacity: number;        // e.g., number of rackets it can hold
+  capacity: number;  
   waterproof?: boolean;
-  color?: string;
+  colors: string[];
 }
 
 export interface ShoesItem extends BaseItem {
@@ -64,10 +65,9 @@ export interface ShoesItem extends BaseItem {
 
 export interface StringItem extends BaseItem {
   type: 'string';
-  gauge: number;             // e.g., 0.66 (mm)
-  material: string;          // e.g., nylon
-  color?: string;
-  length?: number;           // in meters
+  name: string;       
+  colors: string[];
+  lengths: number[];  // in meters
 }
 
 export interface ShuttleItem extends BaseItem {

@@ -1,4 +1,4 @@
-'use client'
+'use client' // used for sorting
 
 import { useEffect, useState } from 'react'
 import ItemCard from './ItemCard'

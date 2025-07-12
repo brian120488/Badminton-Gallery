@@ -28,7 +28,18 @@ const ItemList = () => {
         {cartItems.map((item, i) => (
           <tr key={i} className="hover:bg-gray-50">
             <td className="px-4 py-2 border-b">{i + 1}</td>
-            <td className="px-4 py-2 border-b">{item.name}</td>
+            <td className="px-4 py-2 border-b">
+              <div className="font-semibold">{item.name}</div>
+              {item.selection && (
+                <ul className="text-sm text-gray-500">
+                  {Object.entries(item.selection).map(([key, val]) => (
+                    <li key={key}>
+                      {key.replace(/_/g, ' ')}: {val}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </td>
             <td className="px-4 py-2 border-b">${item.price.toFixed(2)}</td>
             <td className="px-4 py-2 border-b">{item.quantity}</td>
             <td className="px-4 py-2 border-b">
