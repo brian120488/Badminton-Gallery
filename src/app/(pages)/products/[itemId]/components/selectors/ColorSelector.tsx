@@ -1,6 +1,6 @@
 'use client';
 
-import { useItemContext } from '../ItemContext';
+import { useItemContext } from '../../contexts/ItemContext';
 
 interface Props {
   colors: string[];
@@ -9,7 +9,7 @@ interface Props {
 export default function ColorSelector({ colors }: Props) {
   const { item, updateItem } = useItemContext();
   const color = item.selection.color;
-  
+
   return (
     <>
       Color: {color}

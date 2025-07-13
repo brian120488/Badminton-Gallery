@@ -1,6 +1,6 @@
 'use client';
 
-import { useItemContext } from '../ItemContext';
+import { useItemContext } from '../../contexts/ItemContext';
 
 export default function QuantitySelector() {
   const { item, updateItem } = useItemContext();

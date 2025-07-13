@@ -1,6 +1,6 @@
 'use client';
 
-import { useItemContext } from './ItemContext';
+import { useItemContext } from '../contexts/ItemContext';
 
 import { addItem } from '@/lib/redux/cart/cartSlice';
 import { useAppDispatch } from '@/lib/redux/store'
