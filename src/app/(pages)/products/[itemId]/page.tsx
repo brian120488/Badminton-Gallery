@@ -2,6 +2,9 @@ import { getProductById } from '@/lib/aws/dynamo'
 import { getProductImages } from '@/lib/aws/s3';
 import Image from 'next/image';
 import SpecsSelector from './components/SpecsSelector';
+import { ItemProvider } from './components/ItemContext';
+import QuantitySelector from './components/selectors/QuantitySelector';
+import AddToCartButton from './components/AddToCartButton';
 
 export default async function ItemPage({ params }: { params: Promise<{ itemId: string }> }) {
   const { itemId } = await params;
@@ -30,8 +33,11 @@ export default async function ItemPage({ params }: { params: Promise<{ itemId: s
             <div className="text-xl font-bold">Customize</div>
             <div>Name: {item.name}</div>
             <div>Price: ${item.price}</div>
-
-            <SpecsSelector item={item} />
+            <ItemProvider initialItem={item}>
+              <SpecsSelector />
+              <QuantitySelector />
+              <AddToCartButton />
+            </ItemProvider>
             {/* Add dropdowns, color pickers, etc. here */}
           </div>
         </div>

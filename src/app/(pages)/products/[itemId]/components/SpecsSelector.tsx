@@ -1,63 +1,22 @@
 'use client'
 
-import type { Item } from '@/types/types'
-import { useState } from 'react';
 import ColorSelector from './selectors/ColorSelector'
 import WeightGripSelector from './selectors/WeightGripSelector'
 import StringSelector from './selectors/StringSelector'
 import TensionSelector from './selectors/TensionSelector'
-import QuantitySelector from './selectors/QuantitySelector';
-import AddToCartButton from './AddToCartButton'
+import { useItemContext } from './ItemContext';
 
-export default function SpecsSelector({ item }: { item: Item }) {
-  const [quantity, setQuantity] = useState(1);
-  const [selection, setSelection] = useState<Item['selection']>(() => {
-    switch (item.type) {
-      case 'racket':
-        return {
-          color: item.specs.colors[0],
-          weight_grip: item.specs.weight_grip[0],
-          string: '',
-          tension: 0,
-        };
-      // case 'bag':
-      //   return {
-      //     color: item.specs.colors[0],
-      //   };
-      default:
-        return {};
-    }
-  });
-
-  const update = <K extends string>(key: K, value: any) => {
-    setSelection((prev: any) => ({ ...prev, [key]: value }));
-  };
+export default function SpecsSelector() {
+  const { item, updateItem } = useItemContext();
 
    return (
     <>
       {item.type === 'racket' && (
         <>
-          <ColorSelector
-            colors={item.specs.colors}
-            selected={selection.color}
-            onSelect={(c) => update('color', c)}
-          />
-          <WeightGripSelector
-            options={item.specs.weight_grip}
-            selected={selection.weight_grip}
-            onSelect={(wg) => update('weight_grip', wg)}
-          />
-          <StringSelector
-            selected={selection.string}
-            onSelect={(s) => update('string', s)}
-          />
-          { selection.string && 
-              <TensionSelector
-              selected={selection.tension}
-              onSelect={(t) => update('tension', t)}
-            />
-          }
-          
+          <ColorSelector colors={item.specs.colors} />
+          <WeightGripSelector options={item.specs.weight_grip} />
+          <StringSelector />
+          { item.selection.string && <TensionSelector /> }
         </>
       )}
 
@@ -70,17 +29,6 @@ export default function SpecsSelector({ item }: { item: Item }) {
       )} */}
 
       {/* Add cases for other item types here */}
-
-      <QuantitySelector
-        quantity={quantity}
-        onChange={setQuantity}
-      />
-
-      <AddToCartButton
-        item={item}
-        selection={selection}
-        quantity={quantity}
-      />
     </>
   );
 }

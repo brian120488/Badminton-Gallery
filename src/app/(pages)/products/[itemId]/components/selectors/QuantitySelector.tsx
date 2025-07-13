@@ -1,16 +1,18 @@
-interface Props {
-  quantity: number;
-  onChange: (newQuantity: number) => void;
-}
+'use client';
 
-export default function QuantitySelector({ quantity, onChange }: Props) {
+import { useItemContext } from '../ItemContext';
+
+export default function QuantitySelector() {
+  const { item, updateItem } = useItemContext();
+  const quantity = item.quantity;
+
   const decrease = () => {
     if (quantity > 1) 
-      onChange(quantity - 1);
+      updateItem({ quantity: quantity - 1 });
   };
 
   const increase = () => {
-    onChange(quantity + 1);
+    updateItem({ quantity: quantity + 1 });
   };
 
   return (

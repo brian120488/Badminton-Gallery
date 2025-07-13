@@ -23,9 +23,16 @@ export interface BaseItem {
   brand: string
   images: string[];
   price: number;
-  quantity: number
-  selection: Record<string, any>;
+  quantity: number;
+  selection: Selection;
 }
+
+export type Selection = Partial<{
+  color: string;
+  weight_grip: string;
+  string: string;
+  tension: number;
+}>;
 
 export interface Cart {
   items: Item[];
@@ -41,12 +48,6 @@ export interface RacketItem extends BaseItem {
     weight_grip: string[];
     colors: string[];
   };
-  selection: {
-    color: string;
-    weight_grip: string;
-    string: string;
-    tension: number;
-  }
 }
 
 export interface BagItem extends BaseItem {

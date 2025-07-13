@@ -1,21 +1,28 @@
+'use client';
+
+import { useItemContext } from '../ItemContext';
+
 interface Props {
   colors: string[];
-  selected: string;
-  onSelect: (color: string) => void;
 }
 
-export default function ColorSelector({ colors, selected, onSelect }: Props) {
+export default function ColorSelector({ colors }: Props) {
+  const { item, updateItem } = useItemContext();
+  const color = item.selection.color;
+  
   return (
     <>
-      Color: {selected}
+      Color: {color}
       <div className='flex gap-3'>
-        {colors.map((color) => (
+        {colors.map((c) => (
           <button
-            key={color}
-            type='button'
-            onClick={() => onSelect(color)}
-            className={`w-8 h-8 rounded-full border-2 focus:outline-none
-              ${selected === color ? 'border-black' : 'border-gray-300'}`}
+            key={c}
+            onClick={() => updateItem({
+              selection: {
+                'color': c
+              }
+            })}
+            className={`w-8 h-8 rounded-full border-2 ${color === c ? 'border-black' : 'border-gray-300'}`}
             style={{ backgroundColor: color }}
           />
         ))}

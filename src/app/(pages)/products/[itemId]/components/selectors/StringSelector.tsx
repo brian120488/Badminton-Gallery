@@ -1,11 +1,11 @@
-import TensionSelector from './TensionSelector'
+'use client';
 
-interface Props {
-  selected: string;
-  onSelect: (stringName: string) => void;
-}
+import { useItemContext } from '../ItemContext';
 
-export default function StringSelector({ selected, onSelect }: Props) {
+export default function StringSelector() {
+  const { item, updateItem } = useItemContext();
+  const string = item.selection.string;
+
   const strings = new Map([
     ['No String', 0],
     ['Yonex BG65', 30],
@@ -17,8 +17,12 @@ export default function StringSelector({ selected, onSelect }: Props) {
       <label htmlFor='string'>String: </label>
       <select
         id='string'
-        value={selected ?? ''}
-        onChange={(e) => onSelect(e.target.value)}
+        value={string ?? ''}
+        onChange={(e) => updateItem({
+          selection: {
+            'string': e.target.value
+          }
+        })}
       >
         <option value='' disabled>
           Select a string

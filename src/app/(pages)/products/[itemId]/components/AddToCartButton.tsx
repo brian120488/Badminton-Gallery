@@ -1,20 +1,16 @@
+'use client';
+
+import { useItemContext } from './ItemContext';
 
 import { addItem } from '@/lib/redux/cart/cartSlice';
 import { useAppDispatch } from '@/lib/redux/store'
 import type { Item } from '@/types/types'
 
-interface Props {
-  item: Item;
-  selection: Item['selection'];
-  quantity: Item['quantity'];
-}
-
-export default function AddToCartButton({ item, selection, quantity }: Props) {
+export default function AddToCartButton() {
+  const { item, updateItem } = useItemContext();
   const dispatch = useAppDispatch();
   
   const addToCartHandler = () => {
-    item.selection = selection;
-    item.quantity = quantity;
     dispatch(addItem(item));
   };
 

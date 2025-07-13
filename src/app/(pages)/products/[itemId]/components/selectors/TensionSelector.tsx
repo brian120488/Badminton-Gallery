@@ -1,9 +1,11 @@
-interface Props {
-  selected: number;
-  onSelect: (tension: number) => void;
-}
+'use client';
 
-export default function TensionSelector({ selected, onSelect }: Props) {
+import { useItemContext } from '../ItemContext';
+
+export default function TensionSelector() {
+  const { item, updateItem } = useItemContext();
+  const tension = item.selection.tension;
+
   const tensions = Array.from({ length: 11 }, (_, i) => 20 + i); // 20-30
   
   return (
@@ -13,8 +15,12 @@ export default function TensionSelector({ selected, onSelect }: Props) {
       </label>
       <select
         id="tension-select"
-        value={selected ?? ''}
-        onChange={(e) => onSelect(Number(e.target.value))}
+        value={tension ?? ''}
+        onChange={(e) => updateItem({
+          selection: {
+            'tension': Number(e.target.value)
+          }
+        })}
         className="block w-full rounded-md border border-gray-300 bg-white py-2 px-3
                    shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200
                    focus:ring-opacity-50"
@@ -28,12 +34,6 @@ export default function TensionSelector({ selected, onSelect }: Props) {
           </option>
         ))}
       </select>
-
-      {selected && (
-        <p className="mt-3 text-sm text-gray-700">
-           tension: <span className="font-semibold">{selected} lbs</span>
-        </p>
-      )}
     </div>
   );
 }
