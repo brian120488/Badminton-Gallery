@@ -4,7 +4,7 @@ import ColorSelector from './selectors/ColorSelector'
 import WeightGripSelector from './selectors/WeightGripSelector'
 import StringSelector from './selectors/StringSelector'
 import TensionSelector from './selectors/TensionSelector'
-import { useItemContext } from '../contexts/ItemContext';
+import { useItemContext } from '../contexts/ItemContext'
 
 export default function SpecsSelector() {
   const { item, updateItem } = useItemContext();
