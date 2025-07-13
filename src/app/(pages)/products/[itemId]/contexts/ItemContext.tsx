@@ -46,8 +46,6 @@ export function ItemProvider({
     },
   } as Item);
 
-  console.log(item)
-
   const updateItem = (updates: Partial<Item>) => {
     setItem((prev) => ({
       ...prev,
