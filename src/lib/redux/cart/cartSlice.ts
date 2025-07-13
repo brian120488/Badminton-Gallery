@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { Item, Cart } from '@/types/types'
+import type { Selection, Item, Cart } from '@/types/types'
 
 const initialState: Cart = {
   items: [],
@@ -7,13 +7,29 @@ const initialState: Cart = {
   subtotal: 0,
 };
 
+function isSameItem(item1: Item, item2: Item) {
+  if (item1.id != item2.id) return false;
+
+  const sel1 = item1.selection || {};
+  const sel2 = item2.selection || {};
+
+  const keys = Object.keys(sel1) as (keyof Selection)[];
+
+  for (const key of keys) {
+    if (sel1[key] !== sel2[key]) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<Item>) => {
-      // TODO: check selection object, not just name
-      const i = state.items.findIndex(item => item.name === action.payload.name);
+      const i = state.items.findIndex(item => isSameItem(item, action.payload));
       if (i != -1) {
         state.items[i].quantity! += action.payload.quantity;
       } else {
@@ -23,7 +39,7 @@ const cartSlice = createSlice({
       state.subtotal += action.payload.price * action.payload.quantity;
     },
     removeItem: (state, action: PayloadAction<Item>) => {
-      const index = state.items.findIndex(item => item.name === action.payload.name);
+      const index = state.items.findIndex(item => isSameItem(item, action.payload));
       const item = state.items[index];
       state.itemCount -= item.quantity!;
       state.subtotal -= item.price * item.quantity!
