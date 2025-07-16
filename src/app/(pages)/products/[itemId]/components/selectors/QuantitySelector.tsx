@@ -37,11 +37,11 @@ export default function QuantitySelector() {
   };
 
   return (
-    <div className='flex items-center gap-3'>
+    <div className='flex items-center'>
       <button
         onClick={decrease}
         disabled={quantity === 1}
-        className={`w-8 h-8 flex items-center justify-center rounded border text-lg
+        className={`w-10 h-12 flex items-center justify-center border text-lg rounded-l-sm
           ${
             quantity === 1
               ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
@@ -58,12 +58,12 @@ export default function QuantitySelector() {
         value={tempQuantity}
         onChange={handleInputChange}
         onBlur={handleBlur}
-        className='w-12 text-center text-gray-800 text-base font-medium border border-gray-300 rounded'
+        className='size-12 text-center text-gray-800 text-base font-medium border border-gray-300'
       />
 
       <button
         onClick={increase}
-        className='w-8 h-8 flex items-center justify-center rounded border border-gray-300 hover:bg-gray-100 text-lg text-gray-800 cursor-pointer'
+        className='w-10 h-12 flex items-center justify-center border border-gray-300 hover:bg-gray-100 text-lg text-gray-800 cursor-pointer rounded-r-sm'
       >
         +
       </button>
