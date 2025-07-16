@@ -15,16 +15,6 @@ export default function ColorSelector({ colors }: Props) {
       Color: {color}
       <div className='flex gap-3'>
         {colors.map((c, i) => (
-          // <button
-          //   key={c}
-          //   onClick={() => updateItem({
-          //     selection: {
-          //       'color': c
-          //     }
-          //   })}
-          //   className={`w-8 h-8 rounded-full border-2 ${color === c ? 'border-black' : 'border-gray-300'}`}
-          //   style={{ backgroundColor: color }}
-          // />
           <ColorButton key={i} colors={c} />
         ))}
       </div>
@@ -35,7 +25,7 @@ export default function ColorSelector({ colors }: Props) {
 function ColorButton({ colors }: { colors: string }) {
   const { item, updateItem } = useItemContext();
   const buttonColors = parseColors(colors);
-  const size = 20;
+  const size = 25;
 
   let style: React.CSSProperties = {
     width: size,
@@ -59,7 +49,6 @@ function ColorButton({ colors }: { colors: string }) {
     />
   );
 }
-
 
 function isValidColor(color: string): boolean {
   const s = new Option().style;
