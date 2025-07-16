@@ -7,7 +7,7 @@ import TensionSelector from './selectors/TensionSelector'
 import { useItemContext } from '../contexts/ItemContext'
 
 export default function SpecsSelector() {
-  const { item, updateItem } = useItemContext();
+  const { item } = useItemContext();
 
    return (
     <>

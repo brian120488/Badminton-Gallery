@@ -1,13 +1,11 @@
 'use client';
 
 import { useItemContext } from '../contexts/ItemContext';
-
 import { addItem } from '@/lib/redux/cart/cartSlice';
 import { useAppDispatch } from '@/lib/redux/store'
-import type { Item } from '@/types/types'
 
 export default function AddToCartButton() {
-  const { item, updateItem } = useItemContext();
+  const { item } = useItemContext();
   const dispatch = useAppDispatch();
   
   const addToCartHandler = () => {

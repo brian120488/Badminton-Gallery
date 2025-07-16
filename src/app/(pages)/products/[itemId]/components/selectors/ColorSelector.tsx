@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function ColorSelector({ colors }: Props) {
-  const { item, updateItem } = useItemContext();
+  const { item } = useItemContext();
   const color = item.selection.color;
 
   return (
@@ -27,7 +27,7 @@ function ColorButton({ colors }: { colors: string }) {
   const buttonColors = parseColors(colors);
   const size = 25;
 
-  let style: React.CSSProperties = {
+  const style: React.CSSProperties = {
     width: size,
     height: size,
   };
