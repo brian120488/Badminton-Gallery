@@ -6,6 +6,7 @@ import type { RacketItem, Item, Selection } from '@/types/types';
 interface ItemContextType {
   item: Item;
   updateItem: (updates: Partial<Item>) => void;
+  isSelectionComplete: (item: Item) => boolean;
 }
 
 const ItemContext = createContext<ItemContextType | null>(null);
@@ -57,8 +58,21 @@ export function ItemProvider({
     }) as Item);
   };
 
+  const isSelectionComplete = (item: Item): boolean => {
+    if (item.type === 'racket') {
+      const sel = item.selection as Selection;
+      return (
+        !!sel.color &&
+        !!sel.weight_grip &&
+        !!sel.string
+      );
+    }
+    // TODO: do other items
+    return true;
+  };
+
   return (
-    <ItemContext.Provider value={{ item, updateItem }}>
+    <ItemContext.Provider value={{ item, updateItem, isSelectionComplete }}>
       {children}
     </ItemContext.Provider>
   );
