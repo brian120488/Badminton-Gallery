@@ -43,8 +43,8 @@ export interface Cart {
 export interface RacketItem extends BaseItem {
   type: 'racket';
   specs: {
-    balance: 'head-heavy' | 'even' | 'head-light';
-    flex: 'stiff' | 'medium' | 'flexible';
+    balance: 'head-heavy' | 'even-balanced' | 'head-light';
+    flex: 'extra stiff' | 'stiff' | 'medium' | 'flexible';
     weight_grip: string[];
     colors: string[];
   };
@@ -68,14 +68,12 @@ export interface StringItem extends BaseItem {
   type: 'string';
   name: string;       
   colors: string[];
-  lengths: number[];  // in meters
+  length: number;  // in meters
 }
 
 export interface ShuttleItem extends BaseItem {
   type: 'shuttle';
-  feather: 'goose' | 'duck' | 'synthetic';
-  grade: 'training' | 'tournament' | 'premium';
-  speed?: string;            // e.g., 76, 77
+  speed?: string;
   countPerTube?: number;
 }
 
