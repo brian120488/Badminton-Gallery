@@ -20,7 +20,7 @@ export default function WeightGripSelector({ options }: Props) {
             type='button'
             onClick={() => updateItem({
               selection: {
-                'weight_grip': weight_grip
+                'weight_grip': option
               }
             })}
             className={`p-4 rounded-sm border border-gray-200 hover:border-blue-500 cursor-pointer
