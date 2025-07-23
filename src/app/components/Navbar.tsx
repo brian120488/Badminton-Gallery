@@ -97,8 +97,11 @@ const Navbar = () => {
       </div>
 
 
+      {
+      // TODO: work for mobile
+       }
       {/* Bottom Section */}
-      <div className='flex justify-center mx-50 gap-16'>
+      <div className='flex justify-evenly mx-16 lg:mx-50'>
         {navList.map((item, i) => (
           <NavItem 
             key={i}
