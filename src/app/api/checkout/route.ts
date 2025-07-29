@@ -66,6 +66,7 @@ export async function POST(req: Request) {
       allowed_countries: ['US', 'CA'], // Customize this to your region
     },
     shipping_options: [getShippingRateData(cart.subtotal * 100)],
+    allow_promotion_codes: true,
   });
 
   return NextResponse.json({ clientSecret: session.client_secret });
