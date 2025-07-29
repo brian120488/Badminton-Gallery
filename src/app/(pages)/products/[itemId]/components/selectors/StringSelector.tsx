@@ -18,11 +18,19 @@ export default function StringSelector() {
       <select
         id='string'
         value={string ?? ''}
-        onChange={(e) => updateItem({
-          selection: {
-            'string': e.target.value
-          }
-        })}
+        onChange={(e) => {
+          const selectedString = e.target.value;
+          const newStringPrice = strings.get(selectedString) || 0;
+          const prevString = item.selection.string || '';
+          const prevStringPrice = strings.get(prevString) || 0;
+
+          updateItem({
+            price: item.price - prevStringPrice + newStringPrice,
+            selection: {
+              string: selectedString,
+            },
+          });
+        }}
       >
         <option value='' disabled>
           Select a string
