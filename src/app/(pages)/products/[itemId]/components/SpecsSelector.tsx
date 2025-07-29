@@ -1,10 +1,10 @@
 'use client'
 
-import ColorSelector from './ColorSelector'
-import WeightGripSelector from './WeightGripSelector'
-import StringSelector from './StringSelector'
-import TensionSelector from './TensionSelector'
-import { useItemContext } from '../../contexts/ItemContext'
+import ColorSelector from './selectors/ColorSelector'
+import WeightGripSelector from './selectors/WeightGripSelector'
+import StringSelector from './selectors/StringSelector'
+import TensionSelector from './selectors/TensionSelector'
+import { useItemContext } from '../contexts/ItemContext'
 
 export default function SpecsSelector() {
   const { item } = useItemContext();
