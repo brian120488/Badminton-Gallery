@@ -12,7 +12,6 @@ export default function AddToCartButton() {
     dispatch(addItem(item));
   };
 
-
   return (
     <>
       {isSelectionComplete(item) && 
