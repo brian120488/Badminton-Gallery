@@ -1,12 +1,19 @@
 'use client';
 
 import { useItemContext } from '../../contexts/ItemContext';
+import { useEffect } from 'react';
 
 export default function TensionSelector() {
   const { item, updateItem } = useItemContext();
-  const tension = item.selection.tension;
-
   const tensions = Array.from({ length: 11 }, (_, i) => 20 + i); // 20-30
+
+  useEffect(() => {
+    updateItem({
+      selection: {
+        'tension': 20
+      }
+    })
+  }, []);
   
   return (
     <div className="w-48">
@@ -15,7 +22,7 @@ export default function TensionSelector() {
       </label>
       <select
         id="tension-select"
-        value={tension ?? ''}
+        value={20}
         onChange={(e) => updateItem({
           selection: {
             'tension': Number(e.target.value)
