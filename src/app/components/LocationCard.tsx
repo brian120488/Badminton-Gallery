@@ -4,9 +4,11 @@ interface Props {
   location: string;
   address: string;
   image: string;
+  hours: Record<string, string>;
 }
 
-export default function LocationCard({ location, address, image }: Props) {
+
+export default function LocationCard({ location, address, image, hours }: Props) {
   return (
     <div className='flex p-6 border rounded-xl overflow-hidden'>
       {/* Image Section */}
@@ -27,6 +29,16 @@ export default function LocationCard({ location, address, image }: Props) {
         <p className='text-gray-700'>
           Address: {address}
         </p>
+        <div className='text-gray-600 text-sm'>
+          <p className='font-medium mb-1'>Hours:</p>
+          <ul>
+            {Object.entries(hours).map(([day, time]) => (
+              <li key={day}>
+                <span className='font-medium'>{day}:</span> {time}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
