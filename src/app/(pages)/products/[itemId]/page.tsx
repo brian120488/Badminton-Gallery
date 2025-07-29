@@ -1,7 +1,7 @@
 import { getProductById } from '@/lib/aws/dynamo'
 import { getProductImages } from '@/lib/aws/s3';
 import Image from 'next/image';
-import SpecsSelector from './components/SpecsSelector';
+import SpecsSelector from './components/selectors/SpecsSelector';
 import { ItemProvider } from './contexts/ItemContext';
 import QuantitySelector from './components/selectors/QuantitySelector';
 import AddToCartButton from './components/AddToCartButton';
