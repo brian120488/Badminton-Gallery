@@ -16,7 +16,7 @@ export default function SpecsSelector() {
           <ColorSelector colors={item.specs.colors} />
           <WeightGripSelector options={item.specs.weight_grip} />
           <StringSelector />
-          { item.selection.string && <TensionSelector /> }
+          { item.selection.string && !item.selection.string.startsWith("No String") && <TensionSelector /> }
         </>
       )}
 
