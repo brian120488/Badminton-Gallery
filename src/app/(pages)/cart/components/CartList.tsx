@@ -22,7 +22,6 @@ const ItemList = () => {
         <table className='min-w-full table-auto text-sm text-gray-700'>
           <thead className='bg-gray-100 uppercase text-xs tracking-wide text-gray-600'>
             <tr>
-              <th className='px-4 py-3 text-left'>#</th>
               <th className='px-4 py-3 text-left'>Item</th>
               <th className='px-4 py-3 text-left'>Price</th>
               <th className='px-4 py-3 text-left'>Qty</th>
@@ -33,7 +32,6 @@ const ItemList = () => {
           <tbody className='divide-y divide-gray-200'>
             {cartItems.map((item, i) => (
               <tr key={i} className='hover:bg-gray-50 transition'>
-                <td className='px-4 py-3'>{i + 1}</td>
                 <td className='px-4 py-3'>
                   <div className='font-medium'>{item.name}</div>
                   {item.selection && (
