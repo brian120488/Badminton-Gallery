@@ -9,11 +9,11 @@ import Link from 'next/link';
 import NavItem from './NavItem'
 import { useAppSelector } from '@/lib/redux/store'
 import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const iconSize = 28;
   const logoSize = 140;
-  const iconHoverScale = 'hover:scale-105';
   const navList = [
     { name: 'Rackets', href: '/racket' },
     { name: 'Shoes', href: '/shoe' },
@@ -26,6 +26,7 @@ const Navbar = () => {
 
   const itemCount = useAppSelector(state => state.cart.itemCount);
   const [showSearch, setShowSearch] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className='border-b border-gray-200 pb-2'>
@@ -49,15 +50,25 @@ const Navbar = () => {
 
 
       {/* Top Section */}
-      <div className='flex justify-between items-center px-32 py-8'>
-        <div className='flex-1 cursor-pointer' onClick={() => setShowSearch(true)}>
+      <div className='flex justify-between items-center px-4 md:px-32 py-8'>
+        <div className='flex items-center gap-4 flex-1'>
           <Image 
             src='/search.svg' 
             alt='Search Icon' 
             width={iconSize} 
-            height={iconSize}  
-            className={iconHoverScale}
+            height={iconSize} 
+            onClick={() => setShowSearch(true)} 
+            className='cursor-pointer hover:scale-105'
           />
+
+          {/* Hamburger Icon (Mobile Only) */}
+          <button
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(prev => !prev)}
+          >
+            {isMenuOpen && <X />}
+            {!isMenuOpen && <Menu />}
+          </button>
         </div>
 
         <div className='flex justify-center flex-1'>
@@ -73,7 +84,7 @@ const Navbar = () => {
               alt='Account Icon' 
               width={iconSize} 
               height={iconSize} 
-              className={iconHoverScale}
+              className='hover:scale-105'
             />
           </Link>
           <Link href='/cart' className='relative'>
@@ -83,7 +94,7 @@ const Navbar = () => {
               alt='Cart Icon'
               width={iconSize}
               height={iconSize}
-              className={iconHoverScale}
+              className='hover:scale-105'
             />
 
             {/* Counter Badge */}
@@ -96,19 +107,31 @@ const Navbar = () => {
         </div>
       </div>
 
-
-      {
-      // TODO: work for mobile
-       }
       {/* Bottom Section */}
-      <div className='flex justify-evenly mx-16 lg:mx-50'>
+      {/* Desktop Nav (hidden on small screens) */}
+      <div className="hidden md:flex justify-evenly mx-50">
         {navList.map((item, i) => (
-          <NavItem 
-            key={i}
-            href={`/collections${item.href}`}
-          >{item.name}</NavItem>
+          <NavItem key={i} href={`/collections${item.href}`}>
+            {item.name}
+          </NavItem>
         ))}
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden px-6 py-4 bg-white border-t border-gray-200 flex flex-col gap-4">
+          {navList.map((item, i) => (
+            <Link
+              key={i}
+              href={`/collections${item.href}`}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-gray-800 text-base hover:text-indigo-600 transition"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

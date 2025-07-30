@@ -32,7 +32,7 @@ export default function LocationCard({ location, address, image, hours }: Props)
 
           <div>
             <p className='font-semibold text-gray-700 mb-1'>Hours:</p>
-            <ul className='grid grid-cols-1 lg:grid-cols-2 gap-y-1 text-sm text-gray-500'>
+            <ul className='grid grid-cols-1 md:grid-cols-2 gap-y-1 text-sm text-gray-500'>
               {Object.entries(hours).map(([day, time]) => (
                 <li key={day} className='flex justify-between w-full pr-4'>
                   <span className='text-gray-600'>{day}</span>
