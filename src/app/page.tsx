@@ -1,5 +1,6 @@
 import LocationCard from './components/LocationCard';
 import FadeIn from './components/FadeIn';
+import { Construction } from 'lucide-react';
 
 export default function Home() {
   const bknyHours = {
@@ -33,42 +34,45 @@ export default function Home() {
   };
 
   return (
-    <div className="relative px-6 md:px-16 xl:px-32 py-12 flex flex-col items-center bg-gray-50 min-h-screen">
-      <div className="text-center max-w-3xl">
-        <h1 className="text-indigo-600 font-medium text-lg mb-2">Welcome to</h1>
-        <h2 className="text-5xl font-extrabold tracking-tight text-gray-900 mb-3">
+    <div className='relative px-6 md:px-16 xl:px-32 py-12 flex flex-col items-center bg-gray-50 min-h-screen'>
+      <div className='text-center max-w-3xl'>
+        <div className='flex items-center gap-4 p-4 mb-8 border border-amber-500 rounded-md'>
+          <Construction stroke='orange' />
+          <p className='text-lg text-gray-500 mb-0'>
+            We are currently adding more items and features to the site. Stay tuned!
+          </p>
+        </div>
+        <h1 className='text-indigo-600 font-medium text-lg mb-2'>Welcome to</h1>
+        <h2 className='text-5xl font-extrabold tracking-tight text-gray-900 mb-3'>
           Badminton Gallery
         </h2>
-        <p className="text-xl text-gray-600 mb-6">
+        <p className='text-xl text-gray-600 mb-6'>
           “Bringing the Best of Badminton to Every Player”
-        </p>
-        <p className="text-md text-gray-500">
-          We are currently adding more items. Stay tuned!
         </p>
       </div>
 
-      <section id='locations' className="flex flex-col gap-10 pt-12 w-full max-w-5xl">
+      <section id='locations' className='flex flex-col gap-10 pt-8 w-full max-w-5xl'>
         <FadeIn>
           <LocationCard
-            location="Flushing"
-            address="133-33 39th Ave, Queens, NY 11354"
-            image="flushing.jpg"
+            location='Flushing'
+            address='133-33 39th Ave, Queens, NY 11354'
+            image='flushing.jpg'
             hours={flushingHours}
           />
         </FadeIn>
         <FadeIn>
           <LocationCard
-            location="Brooklyn"
-            address="974 58th St, Brooklyn, NY 11219"
-            image="bkny.jpg"
+            location='Brooklyn'
+            address='974 58th St, Brooklyn, NY 11219'
+            image='bkny.jpg'
             hours={bknyHours}
           />
         </FadeIn>
         <FadeIn>
           <LocationCard
-            location="Philadelphia"
-            address="3300 Aldine St, Philadelphia, PA 19136"
-            image="philadelphia.jpg"
+            location='Philadelphia'
+            address='3300 Aldine St, Philadelphia, PA 19136'
+            image='philadelphia.jpg'
             hours={philyHours}
           />
         </FadeIn>
