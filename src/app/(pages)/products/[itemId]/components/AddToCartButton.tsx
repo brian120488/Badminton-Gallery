@@ -3,6 +3,7 @@
 import { useItemContext } from '../contexts/ItemContext';
 import { addItem } from '@/lib/redux/cart/cartSlice';
 import { useAppDispatch } from '@/lib/redux/store'
+import toast from 'react-hot-toast';
 
 export default function AddToCartButton() {
   const { item, isSelectionComplete } = useItemContext();
@@ -10,6 +11,7 @@ export default function AddToCartButton() {
 
   const addToCartHandler = () => {
     dispatch(addItem(item));
+    toast.success('Item added to cart.');
   };
 
   return (
