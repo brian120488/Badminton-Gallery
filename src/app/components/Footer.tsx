@@ -24,7 +24,7 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-4">Company</h3>
           <ul className="space-y-2">
             <li><Link href="/about" className="hover:underline">About Us</Link></li>
-            <li><Link href="/locations" className="hover:underline">Our Locations</Link></li>
+            <li><Link href="#locations" className="hover:underline">Our Locations</Link></li>
             <li><Link href="/careers" className="hover:underline">Careers</Link></li>
             <li><Link href="/blog" className="hover:underline">Blog</Link></li>
           </ul>

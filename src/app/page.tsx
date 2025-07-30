@@ -47,7 +47,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-10 mt-12 w-full max-w-5xl">
+      <section id='locations' className="flex flex-col gap-10 pt-12 w-full max-w-5xl">
         <FadeIn>
           <LocationCard
             location="Flushing"
@@ -72,7 +72,7 @@ export default function Home() {
             hours={philyHours}
           />
         </FadeIn>
-      </div>
+      </section>
     </div>
   );
 }
