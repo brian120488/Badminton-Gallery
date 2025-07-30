@@ -5,18 +5,10 @@ import { Item, Selection } from '@/types/types'
 function describeSelection(selection: Selection) {
   const lines: string[] = [];
 
-  if (selection.color) {
-    lines.push(`Color: ${selection.color}`);
-  }
-  if (selection.weight_grip) {
-    lines.push(`Weight/Grip: ${selection.weight_grip}`);
-  }
-  if (selection.string) {
-    lines.push(`String: ${selection.string}`);
-  }
-  if (selection.tension && !selection.string?.startsWith('No')) {
-    lines.push(`Tension: ${selection.tension} lbs`);
-  }
+  if (selection.color) lines.push(`Color: ${selection.color}`);
+  if (selection.weight_grip) lines.push(`Weight/Grip: ${selection.weight_grip}`);
+  if (selection.string) lines.push(`String: ${selection.string}`);
+  if (selection.tension && !selection.string?.startsWith('No')) lines.push(`Tension: ${selection.tension} lbs`);
 
   return lines.length > 0 ? lines.join(', ') : undefined; // doesn't work for Stripe Checkout yet
 }
