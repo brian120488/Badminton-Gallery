@@ -23,8 +23,14 @@ export default function WeightGripSelector({ options }: Props) {
                 'weight_grip': option
               }
             })}
-            className={`p-4 rounded-sm border border-gray-200 hover:border-blue-500 cursor-pointer
-              ${weight_grip === option ? 'bg-blue-500' : 'bg-white'}`}
+            className={`
+              px-5 py-3 rounded-md border text-gray-700
+              cursor-pointer transition-colors duration-300 ease-in-out
+              ${weight_grip === option
+                ? 'border-blue-400'
+                : 'border-gray-300 hover:border-blue-400'}
+              focus:outline-none
+            `}
           >{option}</button>
         ))}
       </div>
