@@ -38,7 +38,7 @@ export default function Home() {
       <div className='text-center max-w-3xl'>
         <div className='flex items-center gap-4 p-4 mb-8 border border-amber-500 rounded-md'>
           <Construction stroke='orange' />
-          <p className='text-lg text-gray-500 mb-0'>
+          <p className='text-lg text-black mb-0'>
             We are currently adding more items and features to the site. Stay tuned!
           </p>
         </div>
