@@ -5,9 +5,10 @@ interface Props {
   address: string;
   image: string;
   hours: Record<string, string>;
+  phone: string;
 }
 
-export default function LocationCard({ location, address, image, hours }: Props) {
+export default function LocationCard({ location, address, image, hours, phone }: Props) {
   return (
     <div className='flex flex-col md:flex-row gap-6 bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200 p-6 transition-all hover:shadow-lg'>
       {/* Image Section */}
@@ -26,8 +27,11 @@ export default function LocationCard({ location, address, image, hours }: Props)
       <div className='flex-1 flex flex-col justify-between'>
         <div>
           <h2 className='text-2xl font-bold text-gray-800 mb-2'>{location}</h2>
-          <p className='text-gray-600 mb-4'>
+          <p className='text-gray-600 mb-2'>
             <span className='font-medium'>Address:</span> {address}
+          </p>
+          <p className='text-gray-600 mb-4'>
+            <span className='font-medium'>Phone:</span> {phone}
           </p>
 
           <div>
