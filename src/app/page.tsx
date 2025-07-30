@@ -46,12 +46,12 @@ export default function Home() {
             We are currently adding more items and features to the site. Stay tuned!
           </p>
         </div>
-        <h1 className='text-indigo-600 font-medium text-lg mb-2'>Welcome to</h1>
+        <h1 className='text-indigo-600 font-medium text-lg'>Welcome to</h1>
         <h2 className='text-5xl font-extrabold tracking-tight text-gray-900 mb-3'>
           Badminton Gallery
         </h2>
-        <p className='text-xl text-gray-600 mb-6'>
-          “Bringing the Best of Badminton to Every Player”
+        <p className='text-lg text-gray-600 mb-6'>
+          Bringing the Best of Badminton to Every Player
         </p>
       </div>
 
