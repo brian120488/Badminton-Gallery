@@ -4,7 +4,7 @@ import { useItemContext } from '../../contexts/ItemContext';
 import { useEffect } from 'react';
 
 export default function TensionSelector() {
-  const { item, updateItem } = useItemContext();
+  const { updateItem } = useItemContext();
   const tensions = Array.from({ length: 11 }, (_, i) => 20 + i); // 20-30
 
   useEffect(() => {
