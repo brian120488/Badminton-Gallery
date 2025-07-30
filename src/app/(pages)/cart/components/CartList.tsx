@@ -1,7 +1,7 @@
 'use client'; // needed for localStorage
 
 import { clearCart, removeItem } from '@/lib/redux/cart/cartSlice';
-import { useAppDispatch, useAppSelector } from '@/lib/redux/store'
+import { useAppDispatch, useAppSelector } from '@/lib/redux/store';
 import Link from 'next/link';
 
 const ItemList = () => {
@@ -12,71 +12,82 @@ const ItemList = () => {
 
   return (
     <>
-      <h2>Cart Items</h2>
-
-      <table className="min-w-full border-collapse border border-gray-300 my-4">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="px-4 py-2 text-left border-b">#</th>
-            <th className="px-4 py-2 text-left border-b">Item</th>
-            <th className="px-4 py-2 text-left border-b">Price</th>
-            <th className="px-4 py-2 text-left border-b">Quantity</th>
-            <th className="px-4 py-2 text-left border-b">Total</th>
-          </tr>
-        </thead>
-        <tbody>
-        {cartItems.map((item, i) => (
-          <tr key={i} className="hover:bg-gray-50">
-            <td className="px-4 py-2 border-b">{i + 1}</td>
-            <td className="px-4 py-2 border-b">
-              <div className="font-semibold">{item.name}</div>
-              {item.selection && (
-                <ul className="text-sm text-gray-500">
-                  {Object.entries(item.selection).map(([key, val]) => (
-                    <li key={key}>
-                      {key.replace(/_/g, ' ')}: {val}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </td>
-            <td className="px-4 py-2 border-b">${item.price.toFixed(2)}</td>
-            <td className="px-4 py-2 border-b">{item.quantity}</td>
-            <td className="px-4 py-2 border-b">
-              ${(item.price * item.quantity!).toFixed(2)}
-            </td>
-            <td className="px-4 py-2 border-b text-center">
-              <button
-                onClick={() => dispatch(removeItem(item))}
-                className="text-red-500 hover:text-red-700 font-bold"
-              >
-                ×
-              </button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-      </table>
-
+    {itemCount == 0 && 
+      <h1>There are no items in your cart.</h1>
+    }
+    
+    {itemCount > 0 &&
+    <>
+      <div className='overflow-x-auto rounded-md shadow-sm'>
+        <table className='min-w-full table-auto text-sm text-gray-700'>
+          <thead className='bg-gray-100 uppercase text-xs tracking-wide text-gray-600'>
+            <tr>
+              <th className='px-4 py-3 text-left'>#</th>
+              <th className='px-4 py-3 text-left'>Item</th>
+              <th className='px-4 py-3 text-left'>Price</th>
+              <th className='px-4 py-3 text-left'>Qty</th>
+              <th className='px-4 py-3 text-left'>Total</th>
+              <th className='px-4 py-3 text-center'>Remove</th>
+            </tr>
+          </thead>
+          <tbody className='divide-y divide-gray-200'>
+            {cartItems.map((item, i) => (
+              <tr key={i} className='hover:bg-gray-50 transition'>
+                <td className='px-4 py-3'>{i + 1}</td>
+                <td className='px-4 py-3'>
+                  <div className='font-medium'>{item.name}</div>
+                  {item.selection && (
+                    <ul className='text-xs text-gray-500 mt-1 space-y-1'>
+                      {Object.entries(item.selection).map(([key, val]) => (
+                        <li key={key}>
+                          {key.replace(/_/g, ' ')}: {val}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </td>
+                <td className='px-4 py-3'>${item.price.toFixed(2)}</td>
+                <td className='px-4 py-3'>{item.quantity}</td>
+                <td className='px-4 py-3'>
+                  ${(item.price * item.quantity!).toFixed(2)}
+                </td>
+                <td className='px-4 py-3 text-center'>
+                  <button
+                    onClick={() => dispatch(removeItem(item))}
+                    className='text-red-500 hover:text-red-700 font-semibold text-lg'
+                  >
+                    ×
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {itemCount > 0 && (
-        <>
-          <h3>Subtotal: ${subtotal.toFixed(2)}</h3>
-          <Link href="/checkout">
-            <button className="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-              Checkout
-            </button>
-          </Link>
-          <button 
-            className="ml-2 mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-            onClick={() => dispatch(clearCart())}
+        <div className='mt-6 text-right space-y-4'>
+          <h3 className='text-lg font-semibold'>Subtotal: ${subtotal.toFixed(2)}</h3>
+          <div className='space-x-3'>
+            <Link href='/checkout'>
+              <button className='bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition font-medium'>
+                Proceed to Checkout
+              </button>
+            </Link>
+            <button
+              className='bg-gray-200 text-gray-800 px-5 py-2 rounded-lg hover:bg-gray-300 transition font-medium'
+              onClick={() => dispatch(clearCart())}
             >
-            Clear Cart
-          </button>
-        </>
+              Clear Cart
+            </button>
+          </div>
+        </div>
       )}
     </>
-  )
-}
+    
+    }
+    </>
+  );
+};
 
 export default ItemList;
