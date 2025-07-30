@@ -90,3 +90,12 @@ export interface PaddleItem extends BaseItem {
   gripSize: string;         // e.g., G4
   length?: number;          // in mm
 }
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  caption: string;
+  image: string;
+  date: string;
+  tags?: string[];
+}
