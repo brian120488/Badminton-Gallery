@@ -1,6 +1,25 @@
 import { stripe } from '@/lib/stripe'
 import { NextResponse } from 'next/server'
-import { Item } from '@/types/types'
+import { Item, Selection } from '@/types/types'
+
+function describeSelection(selection: Selection) {
+  const lines: string[] = [];
+
+  if (selection.color) {
+    lines.push(`Color: ${selection.color}`);
+  }
+  if (selection.weight_grip) {
+    lines.push(`Weight/Grip: ${selection.weight_grip}`);
+  }
+  if (selection.string) {
+    lines.push(`String: ${selection.string}`);
+  }
+  if (selection.tension && !selection.string?.startsWith('No')) {
+    lines.push(`Tension: ${selection.tension} lbs`);
+  }
+
+  return lines.length > 0 ? lines.join(', ') : undefined; // doesn't work for Stripe Checkout yet
+}
 
 function convertToStripeLineItems(cartItems: Item[]) {
   return cartItems.map((item) => ({
@@ -8,7 +27,7 @@ function convertToStripeLineItems(cartItems: Item[]) {
       currency: 'usd',
       product_data: {
         name: item.name,
-        description: 'description',
+        description: describeSelection(item.selection),
         images: item.images,
       },
       unit_amount: Math.round(item.price * 100), // convert dollars to cents
@@ -51,12 +70,9 @@ function getShippingRateData(subtotal: number) {
 export async function POST(req: Request) {
   const { cart } = await req.json();
   const items = cart.items;
-
   const line_items = convertToStripeLineItems(items);
-  console.log('Line Items: ', line_items);
 
   const origin = req.headers.get('origin') ?? process.env.NEXT_PUBLIC_BASE_URL;
-
   const session = await stripe.checkout.sessions.create({
     ui_mode: 'embedded',
     line_items,
