@@ -25,7 +25,6 @@ export default function ItemList({ items, sort }: Props) {
       setItems(sortedItems)
     }
       
-    console.log(sort)
     sortItems(sort);
   }, [sort]);
 
