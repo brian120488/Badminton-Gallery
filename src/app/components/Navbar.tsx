@@ -109,7 +109,7 @@ const Navbar = () => {
 
       {/* Bottom Section */}
       {/* Desktop Nav (hidden on small screens) */}
-      <div className="hidden md:flex justify-evenly mx-50">
+      <div className="hidden md:flex justify-center gap-12 mx-auto">
         {navList.map((item, i) => (
           <NavItem key={i} href={`/collections${item.href}`}>
             {item.name}
