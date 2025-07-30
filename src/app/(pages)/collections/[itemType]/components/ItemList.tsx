@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function ItemList({ items, sort }: Props) {
-  const [arr, setItems] = useState<Item[]>([])
+  const [arr, setItems] = useState<Item[]>(items);
 
   useEffect(() => {
     async function sortItems(sort: string) {
@@ -25,12 +25,13 @@ export default function ItemList({ items, sort }: Props) {
       setItems(sortedItems)
     }
       
+    console.log(sort)
     sortItems(sort);
   }, [sort]);
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-evenly items-start">
-      {items.map((item) => (
+      {arr.map((item) => (
         <ItemCard
           key={item.id}
           item={item}
