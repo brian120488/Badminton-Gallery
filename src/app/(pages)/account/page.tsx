@@ -13,7 +13,7 @@ export default function AccountPage() {
       <div className='flex items-center gap-3 p-4 mb-8 border border-amber-400 rounded-md bg-amber-50'>
         <Construction className='text-amber-500' size={24} />
         <p className='text-sm text-amber-900 m-0'>
-          We are currently adding order history and more features. Stay tuned!
+          We are currently adding functionality for users to view their order history. Stay tuned!
         </p>
       </div>
 
