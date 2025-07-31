@@ -14,7 +14,7 @@ export default function Footer() {
           <ul className="space-y-2">
             <li><Link href="/contact" className="hover:underline">Contact Us</Link></li>
             <li><Link href="/shipping" className="hover:underline">Shipping Info</Link></li>
-            <li><Link href="/returns" className="hover:underline">Returns & Exchanges</Link></li>
+            {/* <li><Link href="/returns" className="hover:underline">Returns & Exchanges</Link></li> */}
             <li><Link href="/faq" className="hover:underline">FAQ</Link></li>
             <li><Link href="https://us.yonex.com/pages/spotting-counterfeits" className="hover:underline">Spotting Counterfeits</Link></li>
           </ul>
