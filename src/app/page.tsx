@@ -40,9 +40,9 @@ export default function Home() {
   return (
     <div className='relative px-6 md:px-16 xl:px-32 py-12 flex flex-col items-center bg-gray-50 min-h-screen'>
       <div className='text-center max-w-3xl'>
-        <div className='flex items-center gap-4 p-4 mb-8 border border-amber-500 rounded-md'>
-          <Construction stroke='orange' />
-          <p className='text-lg text-black mb-0'>
+        <div className='flex items-center gap-3 p-4 mb-8 border border-amber-400 rounded-md bg-amber-50'>
+          <Construction className='text-amber-500' size={24} />
+          <p className='text-sm text-amber-900 m-0'>
             We are currently adding more items and features to the site. Stay tuned!
           </p>
         </div>
