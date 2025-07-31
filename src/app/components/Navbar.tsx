@@ -21,7 +21,7 @@ const Navbar = () => {
     { name: 'Apparel', href: '/apparel' },
     { name: 'Shuttles', href: '/shuttle' },
     { name: 'String', href: '/string' },
-    { name: 'Paddles', href: '/paddle'}
+    // { name: 'Paddles', href: '/paddle'}
   ];
 
   const itemCount = useAppSelector(state => state.cart.itemCount);
