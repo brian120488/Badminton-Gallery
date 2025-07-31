@@ -24,7 +24,7 @@ export default function ItemList({ items, sort }: Props) {
       }
       setItems(sortedItems)
     }
-      
+
     sortItems(sort);
   }, [sort]);
 

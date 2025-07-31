@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function ItemsListWrapper({ items }: Props) {
-  const [sort, setSort] = useState('featured');
+  const [sort, setSort] = useState('name');
 
   return (
     <>
