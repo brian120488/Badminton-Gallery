@@ -20,13 +20,13 @@ export default async function ReturnPage({ params }: { params: Promise<{ session
 
   if (status === 'complete') {
     return (
-      <section id="success">
-        <p>
+      <div className='mx-64 py-8'>
+        <span>
           We appreciate your business! A confirmation email will be sent to{' '}
           {customerEmail}. If you have any questions, please email{' '}
-        </p>
-        <a href="mailto:orders@example.com">orders@example.com</a>.
-      </section>
+        </span>
+        <a href="mailto:support@badmintongallery.us">support@badmintongallery.us</a>.
+      </div>
     )
   }
 }
