@@ -28,6 +28,12 @@ export default function SpecsSelector() {
         />
       )} */}
 
+      {item.type === 'string' && (
+        <>
+          <ColorSelector colors={item.colors} />
+        </>
+      )}
+
       {/* Add cases for other item types here */}
     </>
   );
