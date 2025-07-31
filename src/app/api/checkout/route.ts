@@ -1,6 +1,8 @@
 import { stripe } from '@/lib/stripe'
 import { NextResponse } from 'next/server'
 import { Item, Selection } from '@/types/types'
+import { getServerSession } from 'next-auth/next';
+import { options } from '../auth/[...nextauth]/options';
 
 function describeSelection(selection: Selection) {
   const lines: string[] = [];
@@ -64,17 +66,22 @@ export async function POST(req: Request) {
   const items = cart.items;
   const line_items = convertToStripeLineItems(items);
 
+  const authSession = await getServerSession(options);
+  const userEmail = authSession ? authSession.user!.email : undefined;
+
   const origin = req.headers.get('origin') ?? process.env.NEXT_PUBLIC_BASE_URL;
   const session = await stripe.checkout.sessions.create({
+    customer_email: userEmail as string,
     ui_mode: 'embedded',
     line_items,
     mode: 'payment',
     return_url: `${origin}/return/{CHECKOUT_SESSION_ID}`,
     shipping_address_collection: {
-      allowed_countries: ['US', 'CA'], // Customize this to your region
+      allowed_countries: ['US'], // Customize this to your region
     },
     shipping_options: [getShippingRateData(cart.subtotal * 100)],
     allow_promotion_codes: true,
+    
   });
 
   return NextResponse.json({ clientSecret: session.client_secret });
