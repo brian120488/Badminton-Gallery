@@ -8,9 +8,9 @@ export default async function VerifyPage() {
         <div className="flex justify-center mb-6">
           <Image src="/logo.png" alt="Logo" width={100} height={100} priority={true}/>
         </div>
-        <h1 className="text-xl text-center font-semibold text-gray-900 mb-4">Check your email</h1>
-        <p className="text-md text-gray-900 mb-4">A sign-in link has been sent to your email.</p>
-        <Link href='/' className="text-xl text-center font-semibold text-gray-900 mb-4">{process.env.NEXT_PUBLIC_BASE_URL}</Link>
+        <h1 className="text-xl text-center font-semibold text-gray-900 mb-2">Check your email</h1>
+        <p className="text-md text-center text-gray-900 mb-6">A sign-in link has been sent to your email.</p>
+        <Link href='/' className="text-lg block text-center text-gray-900 hover:underline">{process.env.NEXT_PUBLIC_BASE_URL}</Link>
       </div>
     </div>
   )
