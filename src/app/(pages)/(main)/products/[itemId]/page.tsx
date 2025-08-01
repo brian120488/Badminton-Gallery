@@ -8,8 +8,9 @@ import AddToCartButton from './components/AddToCartButton';
 
 export default async function ItemPage({ params }: { params: Promise<{ itemId: string }> }) {
   const { itemId } = await params;
-  const item =  await getProductById(itemId);
-  const images = await getProductImages(item);
+  const product = await getProductById(itemId);
+  const images = await getProductImages(product);
+  const item = {...product, images: images};
 
   return (
     <div className='p-10'>
