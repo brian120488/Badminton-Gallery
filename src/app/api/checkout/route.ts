@@ -77,7 +77,7 @@ export async function POST(req: Request) {
     mode: 'payment',
     return_url: `${origin}/return/{CHECKOUT_SESSION_ID}`,
     shipping_address_collection: {
-      allowed_countries: ['US'], // Customize this to your region
+      allowed_countries: ['US'],
     },
     shipping_options: [getShippingRateData(cart.subtotal * 100)],
     allow_promotion_codes: true,
