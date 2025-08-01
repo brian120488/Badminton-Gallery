@@ -6,11 +6,23 @@ export default function StringSelector() {
   const { item, updateItem } = useItemContext();
   const string = item.selection.string;
 
-  const strings = new Map([
-    ['No String', 0],
-    ['Yonex BG65', 30],
-    ['Yonex BG65 Ti', 33],
-  ]);
+  const strings = [
+    'No String', 
+    'Yonex BG65',
+    'Yonex BG65 Ti',
+  ];
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedString = e.target.value;
+    const tension = selectedString == strings[0] ? undefined : item.selection.tension;
+
+    updateItem({
+      selection: {
+        string: selectedString,
+        tension: tension,
+      },
+    });
+  };
   
   return (
     <div>
@@ -18,26 +30,14 @@ export default function StringSelector() {
       <select
         id='string'
         value={string ?? ''}
-        onChange={(e) => {
-          const selectedString = e.target.value;
-          const newStringPrice = strings.get(selectedString) || 0;
-          const prevString = item.selection.string || '';
-          const prevStringPrice = strings.get(prevString) || 0;
-
-          updateItem({
-            price: item.price - prevStringPrice + newStringPrice,
-            selection: {
-              string: selectedString,
-            },
-          });
-        }}
+        onChange={handleChange}
       >
         <option value='' disabled>
           Select a string
         </option>
-        {[...strings.keys()].map((name) => (
-          <option key={name} value={name}>
-            {name} - ${strings.get(name)}
+        {strings.map((s) => (
+          <option key={s} value={s}>
+            {s}
           </option>
         ))}
       </select>

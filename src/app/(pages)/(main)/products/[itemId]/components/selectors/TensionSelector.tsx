@@ -15,7 +15,6 @@ export default function TensionSelector() {
     if (!item.selection.tension) {
       updateItem({
         selection: {
-          ...item.selection,
           tension: initialTension,
         },
       });
