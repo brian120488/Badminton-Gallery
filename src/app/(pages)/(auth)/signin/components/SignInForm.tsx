@@ -26,7 +26,7 @@ export default function SignInForm() {
   return (
     <div className="w-full max-w-md p-8 bg-white shadow-sm rounded-2xl">
       <div className="flex justify-center mb-6">
-        <Image src="/logo.png" alt="Logo" width={50} height={50} />
+        <Image src="/logo.png" alt="Logo" width={100} height={100} priority={true}/>
       </div>
 
       <h1 className="text-xl font-semibold text-gray-900 mb-4">Sign In</h1>
