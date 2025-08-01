@@ -2,18 +2,36 @@
 
 import { useItemContext } from '../../contexts/ItemContext';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function TensionSelector() {
-  const { updateItem } = useItemContext();
+  const { item, updateItem } = useItemContext();
   const tensions = Array.from({ length: 11 }, (_, i) => 20 + i); // 20-30
+  
+  const initialTension = item.selection.tension || 20;
+  const [currTension, setCurrTension] = useState(initialTension);
 
   useEffect(() => {
+    if (!item.selection.tension) {
+      updateItem({
+        selection: {
+          ...item.selection,
+          tension: initialTension,
+        },
+      });
+    }
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const tension = Number(e.target.value);
+    setCurrTension(tension);
     updateItem({
       selection: {
-        'tension': 20
-      }
-    })
-  }, []);
+        ...item.selection,
+        tension,
+      },
+    });
+  };
   
   return (
     <div className="w-48">
@@ -22,12 +40,8 @@ export default function TensionSelector() {
       </label>
       <select
         id="tension-select"
-        value={20}
-        onChange={(e) => updateItem({
-          selection: {
-            'tension': Number(e.target.value)
-          }
-        })}
+        value={currTension}
+        onChange={handleChange}
         className="block w-full rounded-md border border-gray-300 bg-white py-2 px-3
                    shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200
                    focus:ring-opacity-50"
