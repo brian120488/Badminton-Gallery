@@ -27,7 +27,6 @@ export default function TensionSelector() {
     setCurrTension(tension);
     updateItem({
       selection: {
-        ...item.selection,
         tension,
       },
     });
