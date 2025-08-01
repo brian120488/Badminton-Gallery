@@ -32,6 +32,7 @@ export type Selection = Partial<{
   weight_grip: string;
   string: string;
   tension: number;
+  size: string;
 }>;
 
 export interface Cart {
@@ -59,9 +60,8 @@ export interface BagItem extends BaseItem {
 
 export interface ShoesItem extends BaseItem {
   type: 'shoes';
-  availableSizes: number[];
-  gender: 'men' | 'women' | 'unisex';
-  color: string;
+  colors: string[];
+  sizes: number[];
 }
 
 export interface StringItem extends BaseItem {
