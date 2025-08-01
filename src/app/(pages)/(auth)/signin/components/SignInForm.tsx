@@ -57,7 +57,7 @@ export default function SignInForm() {
           {loading ? 'Sending link...' : 'Continue'}
         </button>
 
-        <div className='text-sm'>By continuing, I agree to Badminton Gallery's{' '}
+        <div className='text-sm'>By continuing, I agree to Badminton Gallery&apos;s{' '}
           <a
             href='/privacy' 
             target='_blank'

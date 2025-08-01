@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./(pages)/(main)/components/Navbar";
-import Footer from "./(pages)/(main)/components/Footer";
 import ReduxProvider from "@/lib/redux/ReduxProvider";
 import { Toaster } from 'react-hot-toast';
 

@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default async function VerifyPage() {
   return (
@@ -9,7 +10,7 @@ export default async function VerifyPage() {
         </div>
         <h1 className="text-xl text-center font-semibold text-gray-900 mb-4">Check your email</h1>
         <p className="text-md text-gray-900 mb-4">A sign-in link has been sent to your email.</p>
-        <a href='/' className="text-xl text-center font-semibold text-gray-900 mb-4">{process.env.NEXT_PUBLIC_BASE_URL}</a>
+        <Link href='/' className="text-xl text-center font-semibold text-gray-900 mb-4">{process.env.NEXT_PUBLIC_BASE_URL}</Link>
       </div>
     </div>
   )
