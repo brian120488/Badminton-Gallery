@@ -3,6 +3,7 @@
 import { clearCart, removeItem } from '@/lib/redux/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/store';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ItemList = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
@@ -32,17 +33,26 @@ const ItemList = () => {
           <tbody className='divide-y divide-gray-200'>
             {cartItems.map((item, i) => (
               <tr key={i} className='hover:bg-gray-50 transition'>
-                <td className='px-4 py-3'>
-                  <div className='font-medium'>{item.name}</div>
-                  {item.selection && (
-                    <ul className='text-xs text-gray-500 mt-1 space-y-1'>
-                      {Object.entries(item.selection).map(([key, val]) => (
-                        <li key={key}>
-                          {key.replace(/_/g, ' ')}: {val}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                <td className='px-4 py-3 flex items-center gap-4'>
+                  <Image
+                    src={item.images[0]}
+                    width={48}
+                    height={48}
+                    alt={item.name}
+                    className="object-contain"
+                  />
+                  <div>
+                    <p className='font-medium'>{item.name}</p>
+                    {item.selection && (
+                      <ul className='text-xs text-gray-500 mt-1 space-y-1'>
+                        {Object.entries(item.selection).map(([key, val]) => (
+                          <li key={key}>
+                            {key.replace(/_/g, ' ')}: {val}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </td>
                 <td className='px-4 py-3'>${item.price.toFixed(2)}</td>
                 <td className='px-4 py-3'>{item.quantity}</td>
