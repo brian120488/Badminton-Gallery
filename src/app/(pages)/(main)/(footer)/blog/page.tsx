@@ -1,4 +1,4 @@
-// import { BlogPost } from '@/types/BlogPost';
+// import { BlogPost } from '@/types/B3logPost';
 
 export default function BlogPage() {
   // sample data

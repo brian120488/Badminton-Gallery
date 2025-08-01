@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./(pages)/(main)/components/Navbar";
+import Footer from "./(pages)/(main)/components/Footer";
 import ReduxProvider from "@/lib/redux/ReduxProvider";
 import { Toaster } from 'react-hot-toast';
 
@@ -25,9 +25,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body>
         <ReduxProvider>
-          <Navbar />
           {children}
-          <Footer />
         </ReduxProvider>
         <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} />
       </body>
