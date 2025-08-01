@@ -46,7 +46,7 @@ const ItemList = () => {
                     {item.selection && (
                       <ul className='text-xs text-gray-500 mt-1 space-y-1'>
                         {Object.entries(item.selection)
-                          .filter(([_, val]) => val !== undefined)
+                          .filter(([, val]) => val !== undefined)
                           .map(([key, val]) => (
                             <li key={key}>
                               {key.replace(/_/g, ' ')}: {val}
