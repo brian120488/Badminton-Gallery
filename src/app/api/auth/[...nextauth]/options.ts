@@ -40,7 +40,7 @@ export const options: NextAuthOptions = {
     strategy: 'jwt',
   },
   pages: {
-  //   signIn: '/signin',
+    signIn: '/signin',
     verifyRequest: '/verify',
   }
 }

@@ -3,18 +3,25 @@
 import { useState } from "react"
 import { signIn } from "next-auth/react"
 import Image from "next/image"
+import { useSearchParams } from 'next/navigation'
 
 export default function SignInForm() {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError('')
 
-    const res = await signIn('email', { email })
+    const res = await signIn('email', {
+      email,
+      callbackUrl,
+    });
 
     if (res?.error) {
       setError('Sign in failed. Please try again.')
