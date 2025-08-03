@@ -39,9 +39,9 @@ export const options: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
-  pages: {
-    signIn: '/signin',
-    verifyRequest: '/verify',
-  }
+  // pages: {
+  //   signIn: '/signin',
+    // verifyRequest: '/verify',
+  // }
 }
 
