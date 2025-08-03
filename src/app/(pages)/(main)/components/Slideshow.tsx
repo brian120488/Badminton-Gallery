@@ -55,13 +55,23 @@ export default function ImageCarousel() {
   return (
     <div className="relative w-full max-w-screen-xl mx-auto overflow-hidden py-6">
       {/* Arrows */}
-      <div className="flex justify-between mb-4 px-4">
-        <button onClick={handlePrev} className='cursor-pointer'>
-          <ChevronLeft />
-        </button>
-        <button onClick={handleNext} className='cursor-pointer'>
-          <ChevronRight />
-        </button>
+      <div className="flex justify-end mb-4 px-4">
+        <div className="flex gap-2 mr-4">
+          <button
+            onClick={handlePrev}
+            className="flex justify-center items-center cursor-pointer bg-gray-100 rounded-full"
+          >
+            <ChevronLeft className='size-6'/>
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="flex justify-center items-center cursor-pointer bg-gray-100 rounded-full"
+          >
+            <ChevronRight className='size-6'/>
+          </button>
+
+        </div>
       </div>
 
       {/* Carousel */}
@@ -89,16 +99,18 @@ export default function ImageCarousel() {
       </div>
 
       {/* Dots */}
-      <div className="flex justify-center mt-4 gap-2">
+      <div className="w-fit mx-auto mt-4 bg-gray-100 px-2 py-2 rounded-2xl flex gap-1.5">
         {Array.from({ length: total }).map((_, i) => (
           <div
             key={i}
-            className={`w-3 h-3 rounded-full ${
-              i === index ? 'bg-black' : 'bg-gray-300'
+            className={`size-1.5 rounded-full ${
+              i === index ? 'bg-gray-800' : 'bg-gray-300'
             } transition-all duration-300`}
           />
         ))}
       </div>
+
+
     </div>
   );
 }
