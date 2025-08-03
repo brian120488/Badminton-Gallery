@@ -8,9 +8,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const images = [
   '/gallery/goku.jpg',
   '/gallery/iron-man.jpeg',
+  '/gallery/tom-and-jerry.jpeg',
   '/gallery/capsule.jpeg',
   '/gallery/spider-man.jpg',
-  '/gallery/tom-and-jerry.jpeg',
+  
   '/gallery/powerpuff-girls.jpeg',
 ];
 
@@ -85,7 +86,7 @@ export default function ImageCarousel() {
           {visibleImages.map((src, i) => (
             <div
               key={i}
-              className="min-w-[240px] h-[360px] relative rounded-lg overflow-hidden flex-shrink-0"
+              className="min-w-[280px] h-[400px] relative rounded-lg overflow-hidden flex-shrink-0"
             >
               <Image
                 src={src}
