@@ -1,6 +1,5 @@
 // components/Footer.tsx
 import Link from 'next/link'
-import { Instagram, Facebook, Twitter, Youtube } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Footer() {
@@ -56,13 +55,6 @@ export default function Footer() {
               Subscribe
             </button>
           </form>
-
-          <div className="flex items-center gap-4 mt-6 text-gray-400">
-            <Link href="#"><Instagram className="hover:text-white" size={20} /></Link>
-            <Link href="#"><Facebook className="hover:text-white" size={20} /></Link>
-            <Link href="#"><Twitter className="hover:text-white" size={20} /></Link>
-            <Link href="#"><Youtube className="hover:text-white" size={20} /></Link>
-          </div>
         </div>
       </div>
 

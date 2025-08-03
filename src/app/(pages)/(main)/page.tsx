@@ -68,6 +68,7 @@ export default function Home() {
             image='flushing.jpg'
             hours={flushingHours}
             phone={flushingPhone}
+            instagram='https://www.instagram.com/badminton_gallery/'
           />
         </FadeIn>
         <FadeIn>
@@ -77,6 +78,7 @@ export default function Home() {
             image='bkny.jpg'
             hours={bknyHours}
             phone={bknyPhone}
+            instagram='https://www.instagram.com/badminton_gallery_bkny/'
           />
         </FadeIn>
         <FadeIn>
@@ -86,6 +88,7 @@ export default function Home() {
             image='philadelphia.jpg'
             hours={philyHours}
             phone={philyPhone}
+            instagram='https://www.instagram.com/badmintongallery_pa/'
           />
         </FadeIn>
       </section>

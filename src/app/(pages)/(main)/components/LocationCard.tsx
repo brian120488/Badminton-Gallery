@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import Link from 'next/link';
+import { Instagram } from 'lucide-react';
 
 interface Props {
   location: string;
@@ -6,9 +8,10 @@ interface Props {
   image: string;
   hours: Record<string, string>;
   phone: string;
+  instagram: string
 }
 
-export default function LocationCard({ location, address, image, hours, phone }: Props) {
+export default function LocationCard({ location, address, image, hours, phone, instagram }: Props) {
   return (
     <div className='flex flex-col md:flex-row gap-6 bg-white shadow-md rounded-2xl overflow-hidden border border-gray-200 p-6 transition-all hover:shadow-lg'>
       {/* Image Section */}
@@ -26,7 +29,11 @@ export default function LocationCard({ location, address, image, hours, phone }:
       {/* Text Section */}
       <div className='flex-1 flex flex-col justify-between'>
         <div>
-          <h2 className='text-2xl font-bold text-gray-800 mb-2'>{location}</h2>
+          <div className='flex items-center justify-between'>
+            <h2 className='text-2xl font-bold text-gray-800 mb-2'>{location}</h2>
+            <Link href={instagram}><Instagram className="hover:text-white mr-2" size={20} /></Link>
+          </div>
+          
           <p className='text-gray-600 mb-2'>
             <span className='font-medium'>Address:</span> {address}
           </p>
