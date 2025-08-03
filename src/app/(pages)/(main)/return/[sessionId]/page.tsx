@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { stripe } from '@/lib/stripe'
+import ClearCartClient from './components/ClearCartClient'
 
 export default async function ReturnPage({ params }: { params: Promise<{ sessionId: string }> }) {
   const { sessionId } = await params;
@@ -21,6 +22,7 @@ export default async function ReturnPage({ params }: { params: Promise<{ session
   if (status === 'complete') {
     return (
       <div className='mx-64 py-8'>
+        <ClearCartClient />
         <span>
           We appreciate your business! A confirmation email will be sent to{' '}
           {customerEmail}. If you have any questions, please email{' '}
