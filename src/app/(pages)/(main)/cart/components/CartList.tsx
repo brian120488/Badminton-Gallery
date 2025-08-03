@@ -6,10 +6,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Selection } from '@/types/types'
 
-function capitalize(s: string) {
-  return String(s).charAt(0).toUpperCase() + String(s).slice(1);
-}
-
 function describeSelection(selection: Selection) {
   const lines: string[] = [];
 
