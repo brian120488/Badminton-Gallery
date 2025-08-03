@@ -12,7 +12,7 @@ function describeSelection(selection: Selection) {
   if (selection.string) lines.push(`String: ${selection.string}`);
   if (selection.tension && !selection.string?.startsWith('No')) lines.push(`Tension: ${selection.tension} lbs`);
 
-  return lines.length > 0 ? lines.join(', ') : undefined; // doesn't work for Stripe Checkout yet
+  return lines.length > 0 ? lines.join(', ') : undefined;
 }
 
 function convertToStripeLineItems(cartItems: Item[]) {

@@ -4,6 +4,22 @@ import { clearCart, removeItem } from '@/lib/redux/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/redux/store';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Selection } from '@/types/types'
+
+function capitalize(s: string) {
+  return String(s).charAt(0).toUpperCase() + String(s).slice(1);
+}
+
+function describeSelection(selection: Selection) {
+  const lines: string[] = [];
+
+  if (selection.color) lines.push(`Color: ${selection.color}`);
+  if (selection.weight_grip) lines.push(`Weight/Grip: ${selection.weight_grip}`);
+  if (selection.string) lines.push(`String: ${selection.string}`);
+  if (selection.tension && !selection.string?.startsWith('No')) lines.push(`Tension: ${selection.tension} lbs`);
+
+  return lines
+}
 
 const ItemList = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
@@ -45,12 +61,8 @@ const ItemList = () => {
                     <p className='font-medium'>{item.name}</p>
                     {item.selection && (
                       <ul className='text-xs text-gray-500 mt-1 space-y-1'>
-                        {Object.entries(item.selection)
-                          .filter(([, val]) => val !== undefined)
-                          .map(([key, val]) => (
-                            <li key={key}>
-                              {key.replace(/_/g, ' ')}: {val}
-                            </li>
+                        {describeSelection(item.selection).map((line, index) => (
+                          <li key={index}>{line}</li>
                         ))}
                       </ul>
                     )}
