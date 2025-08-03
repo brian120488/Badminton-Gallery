@@ -1,9 +1,5 @@
 'use client';
 
-{/* 
-  TODO: SVG stroke widths are inconsistent
-  */}
-
 import Image from 'next/image';
 import Link from 'next/link';
 import NavItem from './NavItem'
