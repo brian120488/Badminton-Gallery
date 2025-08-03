@@ -1,6 +1,8 @@
 import LocationCard from './components/LocationCard';
 import FadeIn from './components/FadeIn';
 import { Construction } from 'lucide-react';
+import Gallery from './components/Gallery';
+import Slideshow from './components/Slideshow';
 
 export default function Home() {
   const flushingHours = {
@@ -54,6 +56,9 @@ export default function Home() {
           Bringing the Best of Badminton to Every Player
         </p>
       </div>
+
+      {/* <Gallery /> */}
+      <Slideshow />
 
       <section id='locations' className='flex flex-col gap-10 pt-8 w-full max-w-5xl'>
         <FadeIn>
