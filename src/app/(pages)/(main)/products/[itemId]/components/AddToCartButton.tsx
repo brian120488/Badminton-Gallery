@@ -18,7 +18,7 @@ export default function AddToCartButton() {
     <>
       {isSelectionComplete(item) && 
         <button 
-          className='mt-2 border border-blue-500 text-blue-500 px-4 py-2 rounded hover:bg-blue-500 active:bg-blue-500 hover:text-white active:text-white cursor-pointer'
+          className='border border-blue-500 text-blue-500 w-full h-12 rounded hover:bg-blue-500 active:bg-blue-500 hover:text-white active:text-white cursor-pointer'
           onClick={addToCartHandler}
         >
           Add to Cart

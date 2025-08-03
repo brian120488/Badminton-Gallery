@@ -37,8 +37,11 @@ export default async function ItemPage({ params }: { params: Promise<{ itemId: s
             </div>
             <ItemProvider initialItem={item}>
               <SpecsSelector />
-              <QuantitySelector />
-              <AddToCartButton />
+              <div className='mt-10 flex items-center gap-4'>
+                <QuantitySelector />
+                <AddToCartButton />
+              </div>
+              
             </ItemProvider>
             {/* Add dropdowns, color pickers, etc. here */}
           </div>
