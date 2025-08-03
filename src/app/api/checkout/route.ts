@@ -81,7 +81,7 @@ export async function POST(req: Request) {
     },
     shipping_options: [getShippingRateData(cart.subtotal * 100)],
     allow_promotion_codes: true,
-    
+    automatic_tax: { enabled: true },
   });
 
   return NextResponse.json({ clientSecret: session.client_secret });
