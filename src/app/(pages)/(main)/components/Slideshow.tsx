@@ -11,12 +11,11 @@ const images = [
   '/gallery/tom-and-jerry.jpeg',
   '/gallery/capsule.jpeg',
   '/gallery/spider-man.jpg',
-  
   '/gallery/powerpuff-girls.jpeg',
 ];
 
-const IMAGE_WIDTH = 240;
-const GAP = 16;
+const IMAGE_WIDTH = 280;
+const GAP = 8;
 // const VISIBLE_COUNT = 5;
 const AUTO_SCROLL_INTERVAL = 3000; // 3 seconds
 
