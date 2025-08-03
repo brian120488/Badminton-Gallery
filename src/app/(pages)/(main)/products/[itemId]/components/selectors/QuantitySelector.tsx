@@ -29,12 +29,16 @@ export default function QuantitySelector() {
 
   const handleBlur = () => {
     const value = parseInt(tempQuantity, 10);
+  
     if (!isNaN(value) && value >= 1) {
       updateItem({ quantity: value });
+      setTempQuantity(value.toString()); // normalize input display
     } else {
       updateItem({ quantity: 1 });
+      setTempQuantity('1'); // reset input field to 1
     }
   };
+  
 
   return (
     <div className='flex items-center'>
