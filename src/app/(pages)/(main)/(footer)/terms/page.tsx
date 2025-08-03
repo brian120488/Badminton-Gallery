@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 
-export default function PriavyPage() {
+export default function TermsPage() {
   const [html, setHtml] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/privacy.html')
+    fetch('/terms.html')
       .then(res => res.text())
       .then(setHtml);
   }, []);
