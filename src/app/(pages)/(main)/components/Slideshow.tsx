@@ -16,7 +16,7 @@ const images = [
 
 const IMAGE_WIDTH = 240;
 const GAP = 16;
-const VISIBLE_COUNT = 5;
+// const VISIBLE_COUNT = 5;
 const AUTO_SCROLL_INTERVAL = 3000; // 3 seconds
 
 export default function ImageCarousel() {

@@ -1,7 +1,7 @@
 import LocationCard from './components/LocationCard';
 import FadeIn from './components/FadeIn';
 import { Construction } from 'lucide-react';
-import Gallery from './components/Gallery';
+// import Gallery from './components/Gallery';
 import Slideshow from './components/Slideshow';
 
 export default function Home() {

@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 
 import Stripe from 'stripe';
 
-export async function buildReceiptHTMLFromSession(session: Stripe.Checkout.Session) {
+async function buildReceiptHTMLFromSession(session: Stripe.Checkout.Session) {
   const lineItems = await stripe.checkout.sessions.listLineItems(session.id, { limit: 100 });
 
   const itemsHTML = await Promise.all(
