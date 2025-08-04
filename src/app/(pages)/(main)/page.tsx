@@ -60,19 +60,15 @@ export default function Home() {
 
       {/* <Gallery /> */}
       <div className="mb-4 md:mb-12 w-full max-w-4xl aspect-[5/2.7] relative overflow-hidden rounded-lg mx-auto">
-  <Image
-    src="/gallery/ultraman.png"
-    alt="Victor x Ultraman"
-    fill
-    className="object-cover"
-    sizes="(max-width: 768px) 100vw, 700px"
-    priority
-  />
-</div>
-
-
-
-
+        <Image
+          src="/gallery/ultraman.png"
+          alt="Victor x Ultraman"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 700px"
+          priority
+        />
+      </div>
 
       <Slideshow />
 

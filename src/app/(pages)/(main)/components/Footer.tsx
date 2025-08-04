@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         {/* Newsletter & Socials */}
-        <div>
+        {/* <div>
           <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
           <form className="flex flex-col gap-2">
             <input
@@ -55,7 +55,7 @@ export default function Footer() {
               Subscribe
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
 
       {/* Payment Icons */}
