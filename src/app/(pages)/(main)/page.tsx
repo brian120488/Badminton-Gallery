@@ -3,6 +3,7 @@ import FadeIn from './components/FadeIn';
 import { Construction } from 'lucide-react';
 // import Gallery from './components/Gallery';
 import Slideshow from './components/Slideshow';
+import Image from 'next/image';
 
 export default function Home() {
   const flushingHours = {
@@ -58,6 +59,21 @@ export default function Home() {
       </div>
 
       {/* <Gallery /> */}
+      <div className="mb-4 md:mb-12 w-full max-w-4xl aspect-[5/2.7] relative overflow-hidden rounded-lg mx-auto">
+  <Image
+    src="/gallery/ultraman.png"
+    alt="Victor x Ultraman"
+    fill
+    className="object-cover"
+    sizes="(max-width: 768px) 100vw, 700px"
+    priority
+  />
+</div>
+
+
+
+
+
       <Slideshow />
 
       <section id='locations' className='flex flex-col gap-10 pt-8 w-full max-w-5xl'>
