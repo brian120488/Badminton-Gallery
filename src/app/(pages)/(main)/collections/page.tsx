@@ -6,9 +6,9 @@ import { Construction } from 'lucide-react'
 export default async function CollectionsPage({
   searchParams,
 }: {
-  searchParams: { s?: string }
+  searchParams: Promise<{ s?: string }>
 }) {
-  const search = searchParams.s as string;
+  const { search } = await searchParams.s;
   const items = await getProductsByIdContains(search);
   const itemsWithImages = await Promise.all(
     items.map(async (item) => {
@@ -30,7 +30,7 @@ export default async function CollectionsPage({
         <div className="flex items-center gap-3 p-4 mx-96 my-8 border border-amber-400 rounded-md bg-amber-50">
           <Construction className="text-amber-500" size={24} />
           <p className="text-sm text-amber-900 m-0">
-            No products found for the name "{search}".
+            No products found for the name &quot;{search}&quot;.
           </p>
         </div>
       )}
