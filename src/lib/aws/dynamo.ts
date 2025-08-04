@@ -52,6 +52,30 @@ export async function getProductById(id: string) {
   }
 }
 
+export async function getProductsByIdContains(partialId: string) {
+  try {
+    const command = new ScanCommand({
+      TableName: TABLE_NAME,
+      FilterExpression: 'contains(#id, :partialId)',
+      ExpressionAttributeNames: {
+        '#id': 'Id',
+      },
+      ExpressionAttributeValues: {
+        ':partialId': partialId,
+      },
+    });
+
+    const result = await ddb.send(command);
+    const rawItems = result.Items ?? [];
+    const items: Item[] = rawItems.map(item => keysToCamelCase(item) as Item);
+    return items;
+  } catch (error) {
+    console.error(`Failed to search products by ID fragment "${partialId}":`, error);
+    throw error;
+  }
+}
+
+
 function toCamelCase(str: string) {
   if (str.includes('_')) {
     return str.toLowerCase();
