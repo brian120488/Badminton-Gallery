@@ -6,7 +6,7 @@ import NavItem from './NavItem'
 import { useAppSelector } from '@/lib/redux/store'
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import SearchModal from './SearchModal';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const iconSize = 28;
@@ -21,15 +21,21 @@ const Navbar = () => {
     // { name: 'Paddles', href: '/paddle'}
   ];
 
-  const itemCount = useAppSelector(state => state.cart.itemCount);
+  const router = useRouter();
   const [showSearch, setShowSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const itemCount = useAppSelector(state => state.cart.itemCount);
+  
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchTerm.trim()) {
+      router.push(`/collections?s=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
 
   return (
     <nav className='border-b border-gray-200 pb-2'>
-      <SearchModal showSearch={showSearch} setShowSearch={setShowSearch} />
-
-
       {/* Top Section */}
       <div className='flex justify-between items-center px-4 md:px-32 py-8'>
         <div className='flex items-center gap-4 flex-1'>
@@ -42,9 +48,24 @@ const Navbar = () => {
             className='cursor-pointer hover:scale-105'
           />
 
+          {/* Inline Search Input */}
+          {showSearch && (
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onBlur={() => setShowSearch(false)}
+              placeholder="Search..."
+              className="bg-transparent outline-none text-sm placeholder-gray-400 border-b border-gray-300 focus:border-black pb-1 transition-all duration-200"
+              autoFocus
+            />
+          )}
+
+
           {/* Hamburger Icon (Mobile Only) */}
           <button
-            className="md:hidden"
+            className='md:hidden'
             onClick={() => setIsMenuOpen(prev => !prev)}
           >
             {isMenuOpen && <X />}
@@ -90,7 +111,7 @@ const Navbar = () => {
 
       {/* Bottom Section */}
       {/* Desktop Nav (hidden on small screens) */}
-      <div className="hidden md:flex justify-center gap-12 mx-auto">
+      <div className='hidden md:flex justify-center gap-12 mx-auto'>
         {navList.map((item, i) => (
           <NavItem key={i} href={`/collections${item.href}`}>
             {item.name}
@@ -100,13 +121,13 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden px-6 py-4 bg-white border-t border-gray-200 flex flex-col gap-4">
+        <div className='md:hidden px-6 py-4 bg-white border-t border-gray-200 flex flex-col gap-4'>
           {navList.map((item, i) => (
             <Link
               key={i}
               href={`/collections${item.href}`}
               onClick={() => setIsMenuOpen(false)}
-              className="text-gray-800 text-base hover:text-indigo-600 transition"
+              className='text-gray-800 text-base hover:text-indigo-600 transition'
             >
               {item.name}
             </Link>
