@@ -6,6 +6,7 @@ import NavItem from './NavItem'
 import { useAppSelector } from '@/lib/redux/store'
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import SearchModal from './SearchModal';
 
 const Navbar = () => {
   const iconSize = 28;
@@ -26,23 +27,7 @@ const Navbar = () => {
 
   return (
     <nav className='border-b border-gray-200 pb-2'>
-      {showSearch && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-[90%] max-w-md">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full border px-4 py-2 rounded-md focus:outline-none"
-            />
-            <button
-              onClick={() => setShowSearch(false)}
-              className="mt-4 text-sm text-blue-600 underline"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <SearchModal showSearch={showSearch} setShowSearch={setShowSearch} />
 
 
       {/* Top Section */}
