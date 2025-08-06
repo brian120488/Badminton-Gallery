@@ -4,19 +4,20 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 const images = [
-  '/gallery/goku.jpg',
-  '/gallery/iron-man.jpeg',
-  '/gallery/tom-and-jerry.jpeg',
-  '/gallery/capsule.jpeg',
-  '/gallery/spider-man.jpg',
-  '/gallery/powerpuff-girls.jpeg',
+  { src: '/gallery/goku.jpg', href: '/collections?s=dragon-ball-z' },
+  { src: '/gallery/iron-man.jpeg', href: '/products/victor-marvel-iron-man-gift-box' },
+  { src: '/gallery/tom-and-jerry.jpeg', href: '/products/maxx-tom-and-jerry' },
+  { src: '/gallery/capsule.jpeg', href: '/collections?s=capsule' },
+  { src: '/gallery/spider-man.jpg', href: '/products/victor-marvel-spiderman-gift-box' },
+  { src: '/gallery/powerpuff-girls.jpeg', href: '/products/maxx-powerpuff-girls' },
 ];
+
 
 const IMAGE_WIDTH = 280;
 const GAP = 8;
-// const VISIBLE_COUNT = 5;
 const AUTO_SCROLL_INTERVAL = 3000; // 3 seconds
 
 export default function ImageCarousel() {
@@ -82,17 +83,19 @@ export default function ImageCarousel() {
           transition={{ type: 'spring', stiffness: 100, damping: 30 }}
           style={{ width: (IMAGE_WIDTH + GAP) * visibleImages.length }}
         >
-          {visibleImages.map((src, i) => (
+          {visibleImages.map((image, i) => (
             <div
               key={i}
               className="min-w-[280px] h-[400px] relative rounded-lg overflow-hidden flex-shrink-0"
             >
-              <Image
-                src={src}
-                alt={`Image ${i}`}
-                fill
-                className='object-cover'
-              />
+              <Link href={image.href}>
+                <Image
+                  src={image.src}
+                  alt={`Image ${i}`}
+                  fill
+                  className='object-cover'
+                />
+              </Link>
             </div>
           ))}
         </motion.div>

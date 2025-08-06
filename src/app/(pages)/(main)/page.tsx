@@ -1,9 +1,9 @@
 import LocationCard from './components/LocationCard';
 import FadeIn from './components/FadeIn';
 import { Construction } from 'lucide-react';
-// import Gallery from './components/Gallery';
 import Slideshow from './components/Slideshow';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   const flushingHours = {
@@ -60,6 +60,7 @@ export default function Home() {
 
       {/* <Gallery /> */}
       <div className="mb-4 md:mb-12 w-full max-w-4xl aspect-[5/2.7] relative overflow-hidden rounded-lg mx-auto">
+      <Link href='/collections?s=ultraman'>
         <Image
           src="/gallery/ultraman.png"
           alt="Victor x Ultraman"
@@ -68,6 +69,7 @@ export default function Home() {
           sizes="(max-width: 768px) 100vw, 700px"
           priority
         />
+      </Link>
       </div>
 
       <Slideshow />
