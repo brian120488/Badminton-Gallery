@@ -27,7 +27,7 @@ export default async function CollectionsPage({
           <ItemListWrapper itemType="racket" items={itemsWithImages} />
         </div>
       ) : (
-        <div className="flex items-center gap-3 p-4 mx-96 my-8 border border-amber-400 rounded-md bg-amber-50">
+        <div className="flex items-center gap-3 p-4 mx-16 lg:mx-96 my-8 border border-amber-400 rounded-md bg-amber-50">
           <Construction className="text-amber-500" size={24} />
           <p className="text-sm text-amber-900 m-0">
             No products found for the name &quot;{search}&quot;.

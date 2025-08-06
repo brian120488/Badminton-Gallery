@@ -28,7 +28,7 @@ export default async function ItemsPage({ params }: { params: Promise<{ itemType
       }
 
       {itemType != 'racket' &&
-        <div className='flex items-center gap-3 p-4 mx-96 my-8 border border-amber-400 rounded-md bg-amber-50'>
+        <div className='flex items-center gap-3 p-4 mx-16 lg:mx-96 my-8 border border-amber-400 rounded-md bg-amber-50'>
           <Construction className='text-amber-500' size={24} />
           <p className='text-sm text-amber-900 m-0'>
             We are currently only selling rackets online. Other items will be available for sale online later.
