@@ -31,7 +31,6 @@ export function createPersistStorage(): WebStorage {
 const storage = createPersistStorage();
 const APP_VERSION = parseFloat(process.env.NEXT_PUBLIC_APP_VERSION || '0.1.0') * 10;
 
-console.log(APP_VERSION)
 const persistConfig = {
   key: 'cart',
   version: APP_VERSION,
