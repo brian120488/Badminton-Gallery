@@ -1,38 +1,18 @@
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { Resend } from 'resend';
 
-export const ses = new SESClient({
-  region: process.env.AWS_REGION,
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendConfirmationEmail(to: string, subject: string, html: string) {
-  const params = {
-    Destination: {
-      ToAddresses: [to],
-    },
-    Message: {
-      Body: {
-        Html: {
-          Charset: 'UTF-8',
-          Data: html,
-        },
-      },
-      Subject: {
-        Charset: 'UTF-8',
-        Data: subject,
-      },
-    },
-    Source: 'support@badmintongallery.us'
-  };
-
   try {
-    const command = new SendEmailCommand(params);
-    await ses.send(command);
-    console.log('✅ Email sent via SES');
+    const res = await resend.emails.send({
+      from: 'Badminton Gallery <support@badmintongallery.us>',
+      to,
+      subject,
+      html,
+    });
+
+    console.log('✅ Email sent via Resend:', res);
   } catch (err) {
-    console.error('❌ Error sending SES email:', err);
+    console.error('❌ Error sending email via Resend:', err);
   }
 }

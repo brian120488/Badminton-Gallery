@@ -31,7 +31,7 @@ export const options: NextAuthOptions = {
           pass: process.env.RESEND_SMTP_PASS,
         },
       },
-      from: process.env.RESEND_FROM,
+      from: 'noreply@badmintongallery.us',
     }),
   ],
   adapter: DynamoDBAdapter(client),
