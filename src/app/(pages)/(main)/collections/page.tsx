@@ -8,7 +8,7 @@ export default async function CollectionsPage({
 }: {
   searchParams: Promise<{ s?: string }>
 }) {
-  const { search } = await searchParams.s;
+  const search = (await searchParams).s as string;
   const items = await getProductsByIdContains(search);
   const itemsWithImages = await Promise.all(
     items.map(async (item) => {
@@ -30,7 +30,7 @@ export default async function CollectionsPage({
         <div className="flex items-center gap-3 p-4 mx-96 my-8 border border-amber-400 rounded-md bg-amber-50">
           <Construction className="text-amber-500" size={24} />
           <p className="text-sm text-amber-900 m-0">
-            No products found for the name &quot;{search}&quot;.
+            No products found for the name &quot;{search}.
           </p>
         </div>
       )}
