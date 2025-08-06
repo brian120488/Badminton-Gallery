@@ -1,6 +1,6 @@
 // app/api/webhooks/stripe/route.ts
 import { stripe } from '@/lib/stripe'
-import { sendConfirmationEmail } from '@/lib/aws/ses'
+import { sendConfirmationEmail } from '@/lib/resend'
 import { NextResponse } from 'next/server'
 
 import Stripe from 'stripe';
