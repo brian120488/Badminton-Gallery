@@ -7,6 +7,7 @@ import { useAppSelector } from '@/lib/redux/store'
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useRef } from 'react';
 
 const Navbar = () => {
   const iconSize = 28;
@@ -26,11 +27,15 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const itemCount = useAppSelector(state => state.cart.itemCount);
-  
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && searchTerm.trim()) {
       router.push(`/collections?s=${encodeURIComponent(searchTerm.trim())}`);
+
+      // Close the keyboard
+      inputRef.current?.blur();
     }
   };
 
@@ -51,6 +56,7 @@ const Navbar = () => {
           {/* Inline Search Input */}
           {showSearch && (
             <input
+              ref={inputRef}
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}

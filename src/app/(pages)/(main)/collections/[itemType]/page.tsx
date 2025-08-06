@@ -19,7 +19,7 @@ export default async function ItemsPage({ params }: { params: Promise<{ itemType
   return (
     <>
       {itemType == 'racket' &&
-        <div className='mx-16 pb-16'>
+        <div className='mx-2 md:mx-16 pb-16'>
           <span className="block text-4xl font-bold text-gray-800 mt-8 mb-4">
             {itemType.charAt(0).toUpperCase() + itemType.slice(1)}
           </span>

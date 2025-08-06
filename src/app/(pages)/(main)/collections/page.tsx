@@ -20,7 +20,7 @@ export default async function CollectionsPage({
   return (
     <>
       {itemsWithImages.length > 0 ? (
-        <div className="mx-16 pb-16">
+        <div className="mx-2 md:mx-16 pb-16">
           <span className="block text-4xl font-bold text-gray-800 mt-8 mb-4 capitalize">
             Search: &quot;{search}&quot;
           </span>
