@@ -65,17 +65,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: error }, { status: 400 });
   }
 
-  console.log('Event Type: ', event.type)
-
   if (event.type === 'checkout.session.completed') {
-    
     const session = event.data.object;
-    console.log(session)
     const email = session.customer_details!.email;
     const html = await buildReceiptHTMLFromSession(session);
-    console.log(email)
+
     if (email) {
-      console.log(html)
       await sendConfirmationEmail(
         email,
         'Thanks for your order!',
