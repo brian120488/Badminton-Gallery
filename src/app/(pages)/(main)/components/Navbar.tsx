@@ -32,7 +32,8 @@ const Navbar = () => {
   
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && searchTerm.trim()) {
-      router.push(`/collections?s=${encodeURIComponent(searchTerm.trim())}`);
+      const formattedSearch = searchTerm.trim().replace(/\s+/g, '-'); // replaces spaces with hyphens
+      router.push(`/collections?s=${encodeURIComponent(formattedSearch)}`);
 
       // Close the keyboard
       inputRef.current?.blur();
