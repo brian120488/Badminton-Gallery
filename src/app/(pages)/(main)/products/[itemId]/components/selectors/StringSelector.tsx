@@ -66,14 +66,17 @@ export default function StringSelector() {
   };
   
   return (
-    <div>
-      <label htmlFor='string'>String: </label>
+    <div className="flex flex-col gap-1">
+      <label htmlFor="string" className="text-sm font-medium">
+        String <span className="text-red-500">*</span>
+      </label>
       <select
-        id='string'
+        id="string"
         value={string ?? ''}
         onChange={handleChange}
+        className="w-60 px-2 py-1 border border-gray-300 rounded-md text-sm" // adjust w-60 as needed
       >
-        <option value='' disabled>
+        <option value="" disabled>
           Select a string
         </option>
         {strings.map((s) => (

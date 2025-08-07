@@ -13,7 +13,7 @@ export default function WeightGripSelector({ options }: Props) {
   return (
     <>
       Weight and Grip Size: {weight_grip}
-      <div className='flex gap-3'>
+      <div className='flex gap-3 mt-1'>
         {options.map((option) => (
           <button
             key={option}
@@ -24,7 +24,7 @@ export default function WeightGripSelector({ options }: Props) {
               }
             })}
             className={`
-              px-5 py-3 rounded-md border text-gray-700
+              px-4 py-2 rounded-md border text-gray-700
               cursor-pointer transition-colors duration-300 ease-in-out
               ${weight_grip === option
                 ? 'border-blue-400'
