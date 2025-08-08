@@ -62,6 +62,7 @@ export async function POST(req: Request) {
   try {
     event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!)
   } catch (error) {
+    console.log(error)
     return NextResponse.json({ error: error }, { status: 400 });
   }
 
@@ -69,12 +70,13 @@ export async function POST(req: Request) {
     const session = event.data.object;
     const email = session.customer_details!.email;
     const html = await buildReceiptHTMLFromSession(session);
-
+    const bcc = process.env.BCC_EMAILS?.split(',')
     if (email) {
       await sendConfirmationEmail(
         email,
         'Thanks for your order!',
-        html
+        html,
+        bcc
       );
     }
   }

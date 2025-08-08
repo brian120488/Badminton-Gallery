@@ -2,13 +2,14 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function sendConfirmationEmail(to: string, subject: string, html: string) {
+export async function sendConfirmationEmail(to: string, subject: string, html: string, bcc?: string[]) {
   try {
     const res = await resend.emails.send({
       from: 'Badminton Gallery <support@badmintongallery.us>',
       to,
       subject,
       html,
+      bcc
     });
 
     console.log('✅ Email sent via Resend:', res);
