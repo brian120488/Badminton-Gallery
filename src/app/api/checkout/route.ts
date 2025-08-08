@@ -79,7 +79,7 @@ export async function POST(req: Request) {
     shipping_address_collection: {
       allowed_countries: ['US'],
     },
-    shipping_options: [getShippingRateData(cart.subtotal * 100)],
+    // shipping_options: [getShippingRateData(cart.subtotal * 100)],
     allow_promotion_codes: true,
     automatic_tax: { enabled: true },
   });
