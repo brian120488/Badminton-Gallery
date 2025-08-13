@@ -12,7 +12,9 @@ const nextConfig: NextConfig = {
         hostname: 'badminton-gallery.s3.us-east-2.amazonaws.com', 
         pathname: '/products/**',
       },
-    ]
+    ],
+    minimumCacheTTL: 86400, // 1 day
+    
   },
   allowedDevOrigins: ['/_next/*'],
 };
