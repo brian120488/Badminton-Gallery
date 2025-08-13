@@ -13,8 +13,8 @@ const nextConfig: NextConfig = {
         pathname: '/products/**',
       },
     ],
-    minimumCacheTTL: 86400, // 1 day
-    
+    minimumCacheTTL: 604800, // 7 days
+    formats: ['image/webp'], // only generate webp
   },
   allowedDevOrigins: ['/_next/*'],
 };
