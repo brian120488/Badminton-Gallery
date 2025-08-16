@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/lib/redux/store'
 import toast from 'react-hot-toast';
 
 export default function AddToCartButton() {
-  const { item, isSelectionComplete } = useItemContext();
+  const { item } = useItemContext();
   const dispatch = useAppDispatch();
 
   const addToCartHandler = () => {
@@ -16,14 +16,14 @@ export default function AddToCartButton() {
 
   return (
     <>
-      {isSelectionComplete(item) && 
+      {/* {isSelectionComplete(item) &&  */}
         <button 
           className='border border-blue-500 text-blue-500 w-full h-12 rounded hover:bg-blue-500 active:bg-blue-500 hover:text-white active:text-white cursor-pointer'
           onClick={addToCartHandler}
         >
           Add to Cart
         </button>
-      }
+      {/* } */}
     </>
     
   );

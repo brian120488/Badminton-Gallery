@@ -74,11 +74,8 @@ export default function StringSelector() {
         id="string"
         value={string ?? ''}
         onChange={handleChange}
-        className="w-60 px-2 py-1 border border-gray-300 rounded-md text-sm" // adjust w-60 as needed
+        className="w-60 px-2 py-1 border border-gray-300 rounded-md"
       >
-        <option value="" disabled>
-          Select a string
-        </option>
         {strings.map((s) => (
           <option key={s} value={s}>
             {s}
