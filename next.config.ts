@@ -10,12 +10,14 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'badminton-gallery.s3.us-east-2.amazonaws.com', 
-        pathname: '/products/**',
+        pathname: '/**',
       },
     ],
     minimumCacheTTL: 604800, // 7 days
     formats: ['image/webp'], // only generate webp
   },
+  
+  
   allowedDevOrigins: ['/_next/*'],
 };
 
