@@ -31,35 +31,35 @@ function convertToStripeLineItems(cartItems: Item[]) {
 }
 
 // Expects subtotal in Stripe units
-// function getShippingRateData(subtotal: number) {
-//   if (subtotal >= 15000) { 
-//     // Free shipping
-//     return {
-//       shipping_rate_data: {
-//         type: 'fixed_amount',
-//         fixed_amount: { amount: 0, currency: 'usd' },
-//         display_name: 'Free Shipping',
-//         delivery_estimate: {
-//           minimum: { unit: 'business_day', value: 3 },
-//           maximum: { unit: 'business_day', value: 5 },
-//         },
-//       },
-//     } as const;
-//   } else {
-//     // Standard $15 shipping
-//     return {
-//       shipping_rate_data: {
-//         type: 'fixed_amount',
-//         fixed_amount: { amount: 1500, currency: 'usd' },
-//         display_name: 'Standard Shipping',
-//         delivery_estimate: {
-//           minimum: { unit: 'business_day', value: 3 },
-//           maximum: { unit: 'business_day', value: 5 },
-//         },
-//       },
-//     } as const;
-//   }
-// }
+function getShippingRateData(subtotal: number) {
+  if (subtotal >= 15000) { 
+    // Free shipping
+    return {
+      shipping_rate_data: {
+        type: 'fixed_amount',
+        fixed_amount: { amount: 0, currency: 'usd' },
+        display_name: 'Free Shipping',
+        delivery_estimate: {
+          minimum: { unit: 'business_day', value: 3 },
+          maximum: { unit: 'business_day', value: 5 },
+        },
+      },
+    } as const;
+  } else {
+    // Standard $15 shipping
+    return {
+      shipping_rate_data: {
+        type: 'fixed_amount',
+        fixed_amount: { amount: 1500, currency: 'usd' },
+        display_name: 'Standard Shipping',
+        delivery_estimate: {
+          minimum: { unit: 'business_day', value: 3 },
+          maximum: { unit: 'business_day', value: 5 },
+        },
+      },
+    } as const;
+  }
+}
 
 export async function POST(req: Request) {
   const { cart } = await req.json();
@@ -79,7 +79,7 @@ export async function POST(req: Request) {
     shipping_address_collection: {
       allowed_countries: ['US'],
     },
-    // shipping_options: [getShippingRateData(cart.subtotal * 100)],
+    shipping_options: [getShippingRateData(cart.subtotal * 100)],
     allow_promotion_codes: true,
     automatic_tax: { enabled: true },
   });
