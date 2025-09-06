@@ -22,10 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body>
-        <ReduxProvider>
+        {/* <ReduxProvider>
           {children}
         </ReduxProvider>
-        <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} />
+        <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} /> */}
+        <h1>We are currently under maintenance. Thank you for your patience!</h1>
       </body>
     </html>
   );
