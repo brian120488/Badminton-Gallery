@@ -1,6 +1,6 @@
 import LocationCard from './components/LocationCard';
 import FadeIn from './components/FadeIn';
-import { Construction } from 'lucide-react';
+import { CircleAlert } from 'lucide-react';
 import Slideshow from './components/Slideshow';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -43,12 +43,19 @@ export default function Home() {
   return (
     <div className='relative px-6 md:px-16 xl:px-32 py-12 flex flex-col items-center bg-gray-50 min-h-screen'>
       <div className='text-center max-w-3xl'>
-        <div className='flex items-center gap-3 p-4 mb-8 border border-amber-400 rounded-md bg-amber-50'>
+        <div className="flex items-center gap-3 p-4 mb-8 border border-red-400 rounded-md bg-red-50">
+          <CircleAlert className="text-red-500" size={24} />
+          <p className="text-sm text-red-900 m-0">
+            We are not accepting orders at the moment. Please check back later!
+          </p>
+        </div>
+        {/* <div className='flex items-center gap-3 p-4 mb-8 border border-amber-400 rounded-md bg-amber-50'>
           <Construction className='text-amber-500' size={24} />
           <p className='text-sm text-amber-900 m-0'>
             We are currently adding more items and features to the site. Stay tuned!
           </p>
-        </div>
+        </div> */}
+        
         <h1 className='text-indigo-600 font-medium text-lg'>Welcome to</h1>
         <h2 className='text-5xl font-extrabold tracking-tight text-gray-900 mb-3'>
           Badminton Gallery

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import ReduxProvider from "@/lib/redux/ReduxProvider";
-// import { Toaster } from 'react-hot-toast';
+import ReduxProvider from "@/lib/redux/ReduxProvider";
+import { Toaster } from 'react-hot-toast';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,20 +14,18 @@ export const metadata: Metadata = {
   description: "Website for badminton rackets, shuttles, and more",
 };
 
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-export default function RootLayout() {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en" className={`${inter.variable} antialiased`}>
       <body>
-        {/* <ReduxProvider>
+        <ReduxProvider>
           {children}
         </ReduxProvider>
-        <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} /> */}
-        <h1>We are currently under maintenance. Thank you for your patience!</h1>
+        <Toaster position="bottom-center" toastOptions={{ duration: 2000 }} />
       </body>
     </html>
   );
